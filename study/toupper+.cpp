@@ -4,7 +4,7 @@ using namespace std;
 int main (int ac, char **av)
 {
     const char *s = "adfad";
-    char *m ;
+    int *m;
     int i, j;
     i = 0;
     j = 0;
@@ -13,7 +13,7 @@ int main (int ac, char **av)
     {
     cout << m[j] <<endl;
     cout << s <<endl;
-    m[j] = (char)toupper[i];
+    m[j] = toupper[i];
     j++;
     s++;
     }

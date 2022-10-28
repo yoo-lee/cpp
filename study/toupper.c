@@ -7,10 +7,10 @@ int		ft_toupper(int c)
 	return (c);
 }
 
-int main (int ac, char **av)
+int main ()
 {
-char *s;
-char *d;
+// char *s;
+// char *d;
 // scanf("%c", d);
-    printf("%c", ft_toupper(*av));
+    printf("%c\n", ft_toupper(90));
 }
