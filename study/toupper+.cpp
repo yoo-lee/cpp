@@ -11,9 +11,7 @@ int main (int ac, char **av)
 
     while(s[i])
     {
-    cout << m[j] <<endl;
-    cout << s <<endl;
-    m[j] = toupper[i];
+    m[j] = toupper(s[i]);
     j++;
     s++;
     }
