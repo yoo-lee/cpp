@@ -3,9 +3,9 @@
 #include <stdlib.h>
 #include <cstring>
 
-char ft_toupper(char s)
+char *ft_toupper(char *s)
 {
-		return (s -('Z' - 'z'));
+		return (s + ('Z' - 'z'));
 }
 
 int main (int ac, char **av)
@@ -22,7 +22,9 @@ int main (int ac, char **av)
 		while(i < ac)
 		{
 		std::cout << av[i] << std::endl;
+		s[i] = ft_toupper(av[i]);
 		i++;
+		std::cout << s[i] << std::endl;
 		}
 	// if (ac == 2)
 	// {
