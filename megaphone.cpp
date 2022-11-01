@@ -1,15 +1,14 @@
 #include <iostream>
-using namespace std;
 
-int main (int ac, char **c)
+using namespace std;
+int main (int ac, char **ac)
 {
 	int i = 0;
 	char n;
-	cout << "\"" << endl;
 
 	if (ac == 1)
 	cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << endl;
-	if (ac == 2)
+	if (i < ac)
 	cout << "shhhhh... I think the students are asleep..." << endl;
 	if (ac == 4)
 	// cout << "Damnit" "/"\" ! "\"\" ""Sorry students, I thought this thing was off."" << endl; 
@@ -17,7 +16,6 @@ int main (int ac, char **c)
 //  ./megaphone Damnit " ! " "Sorry students, I thought this thing was off."
 // DAMNIT ! SORRY STUDENTS, I THOUGHT THIS THING WAS OFF.
 
-	printf("21\n");
 	if (ac == 4 || c[4][i])
 	{
 		n = toupper(c[4][i]);
