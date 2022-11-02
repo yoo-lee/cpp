@@ -24,7 +24,8 @@ int main (int ac, char **av)
     i++;
     j++;
     std::cout << str << std::endl;
-    std::cout << std::toupper(str) << std::endl;
+    std::cout << str[i][j] << std::endl;
+
     }
     // n = ft_toupper(m);
 }
