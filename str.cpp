@@ -11,15 +11,19 @@ char ft_toupper(char c)
 int main (int ac, char **av)
 {
     int i,j;
-    i = 0;
+    i = 1;
     j = 0;
+
+    // std::cout << "1";
     if (ac == 1)
-    std::cout <<
-    if (ac < i)
+    std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
+    else
+    while(i < ac)
     {
     std::string str(av[i]);
     i++;
-    std::cout << str;
+    j++;
+    std::cout << str << std::endl;
     }
     // n = ft_toupper(m);
 }
