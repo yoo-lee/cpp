@@ -5,7 +5,7 @@
 using namespace std;
 int main (int ac, char **av)
 {
-	printf("1");
+	// printf("1");
 	int i, j;
 	char n[] = "Damnit" " ! " "Sorry students, I thought this thing was off.";
 	char m[j];
