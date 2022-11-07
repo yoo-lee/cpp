@@ -20,7 +20,7 @@ void Student::phonebook(std::string name, int grade, int score)
 
 void Student::SetData(std::string name, int grade, int score)
 {
-    mName = name;
+    mName = 1;
     mGrade = grade;
     mScore = score;
 }
@@ -29,4 +29,5 @@ int main()
 {
     Student student;
     student.SetData("Saitou Hiroyuki", 2, 80);
+    printf("%d", SetData.mName);
 }

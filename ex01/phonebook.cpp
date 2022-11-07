@@ -1,10 +1,10 @@
 void Student::Phonebook(std::string name, int grade, int score)
 {
 	array[8] = 
-    this->name = first name;
-    this->name = last name;
-    this->grade = grade;
-    this->score = score;
+	name = first name;
+	name = last name;
+	grade = grade;
+	score = score;
 
 	// first name, last name,
 	//  nickname, phone number, and
