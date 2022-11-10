@@ -4,8 +4,11 @@ using namespace std;
 
 int main ()
 {
-	int n;
-	cin >> n;
-	cout << n << endl;
+	// int n;
+	std::string str;
+	// cin >> n;
+	cin >> str;
+	// cout << n << endl;
+	cout << str << endl;
 	return 0;	
 }
