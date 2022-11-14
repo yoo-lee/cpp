@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 
+using namespace std;
 int main (int ac, char **av)
 {
     int i,j;
@@ -13,7 +14,7 @@ int main (int ac, char **av)
         j = 0;
         while (j < c)
         {
-        std::cout <<(char) toupper(av[i][j]);
+        cout <<(char) toupper(av[i][j]);
         j++;
         }
         cout << endl;
