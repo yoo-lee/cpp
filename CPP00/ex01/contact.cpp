@@ -1,27 +1,60 @@
-#include <iostream>
 
-class Contact
+
+void	Contact::init(std::string str)
 {
-	private:
-	std::string c_name;
-	std::string first_name;
-	std::string nickname;
-	std::string darkest_secret;	
-	int phone_num;
+	if (str.size() > 10)
+		std::cout << str.substr(0, 9) + '.';
+	else
+		std::cout << std::setw(10) << str;
+	std::cout << '|';
+}
 
-	public:
-	int get(std::string name);
-};
-
-void Contact::get(std::string name)
+void	Contact::fillContact()
 {
-	Contact c_name;
-	c_name = name;
-} 
+	std::cout << "Input contact information:\n";
 
-int main ()
+	std::cout << "First Name: ";
+	std::cin >> std::ws;
+	std::getline(std::cin, firstname);
+
+	std::cout << "Last Name: ";
+	std::cin >> std::ws;
+	std::getline(std::cin, lastname);
+
+	std::cout << "Nickname: ";
+	std::cin >> std::ws;
+	std::getline(std::cin, nickname);
+
+	std::cout << "Phone Number: ";
+	std::cin >> std::ws;
+	std::getline(std::cin, phonenumber);
+
+	std::cout << "Darkest Secret: ";
+	std::cin >> std::ws;
+	std::getline(std::cin, darkestsecret);
+
+	if (std::cin.eof())
+	{
+		std::cout << "\n^D Error\n";
+		// exit (1);
+	}
+	else
+		std::cout << "Contact has been added!\n";
+}
+
+void	Contact::printFullContact()
 {
-	Contact new;
-	new.get("hfdoa");
-	std::cout << new.c_name << std::endl;
+	std::cout << "First Name: " + firstname + '\n' +
+	"Last Name: " + lastname + '\n' +
+	"Nickname: " + nickname + '\n' +
+	"Phone Number: " + phonenumber + '\n' +
+	"Darkest Secret: " + darkestsecret + '\n';
+}
+
+void Contact::printFormatedContact()
+{
+	doFormating(firstname);
+	doFormating(lastname);
+	doFormating(nickname);
+	std::cout << '\n';
 }

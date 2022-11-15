@@ -3,19 +3,19 @@
 #include "phonebook.hpp"
 
 class Phonebook
-{	
+{
 	private:
 		Phonebook contacts[8];
 	public:
 		void add();
 		void search();
-		void printcontact();
+		void printcontact(contract[8]);
 	// void search();
 };
 
-void	Phonebook::printcontact()
+void	Phonebook::printcontact(contract[8])
 {
-	
+	std::cout << contract[8] <<std::endl;
 }
 
 class Contact

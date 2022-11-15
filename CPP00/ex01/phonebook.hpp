@@ -1,9 +1,8 @@
 #include <iostream>
-#include <iostream>
-#include "phonebook.hpp"
+#include "class.hpp"
 
 class Phonebook
-{	
+{
 	private:
 		Phonebook contacts[8];
 	public:
@@ -15,20 +14,8 @@ class Phonebook
 
 void	Phonebook::printcontact()
 {
-	
+
 }
-
-class Contact
-{
-	public:
-	int index;
-	int phonenum;
-	const char *name;
-	char family_name;
-	char nickname;
-	char secret;
-
-};
 
 void Phonebook::add()
 {
