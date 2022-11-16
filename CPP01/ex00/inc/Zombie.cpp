@@ -20,6 +20,8 @@ Zombie* newZombie( std::string name )
 void randomChump( std::string name );
 {
 	new Zombie;
+	
+	announce
 }
 
 int main ()
