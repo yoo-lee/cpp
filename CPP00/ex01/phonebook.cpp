@@ -6,6 +6,7 @@ void	Phonebook::printcontact(contract[8])
 	std::cout << contract[8] <<std::endl;
 }
 
+<<<<<<< HEAD
 // SEARCH: display a specific contact
 // ◦ Display the saved contacts as a list of 4 columns:
 //  index, first name, last
@@ -36,6 +37,14 @@ void	searchContact()
 
 void Phonebook::searchContact()
 {
+=======
+
+void Phonebook::addphonebook()
+{
+	Contact contact;
+	contact.fillcontact(); 
+
+>>>>>>> e67eab0f96fddb79e1bf5666b76a53fdf190c357
 	std::cout << phonebook.index << std::endl;
 	phonebook.name = "ddfad";
 }
@@ -66,3 +75,15 @@ void Phonebook::print()
 	std::cout<< phonebook.index <<std::endl;
 	std::cout<< phonebook.name <<std::endl;
 }
+<<<<<<< HEAD
+=======
+
+// void Phonebook::search()
+// {
+// 	Phonebook phonebook;
+// 	std::cout << phonebook.index << std::endl;
+// 	std::cout << phonebook.name << std::endl;
+// 	std::cout << phonebook.family_name << std::endl;
+// 	std::cout << phonebook.nickname << std::endl;
+// }
+>>>>>>> e67eab0f96fddb79e1bf5666b76a53fdf190c357

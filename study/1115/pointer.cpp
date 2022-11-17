@@ -4,6 +4,9 @@ using namespace std;
 class sut
 {
     public:
+    sut(int x);
+    void show(sut x)
+    private:
     int Number
 };
 
