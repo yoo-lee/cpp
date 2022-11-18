@@ -1,12 +1,19 @@
 #include<iostream>
+#include<string>
 
 using namespace std;
 
-int main (int ac, char **av)
+int main ()
 {
+    char c;
+    cin >> c;
+    string str = "aieuo";
+    // cout <<str.find(c) << endl;
+    if(str.find(c))
+    {cout << "vowel" << endl;}
+    else 
+    {cout << "consonant" << endl;}
+   
+    return 0;
 
-if (*av[0] == 'a'|| 'e'||'i'||'o'||'u')
-return ("vowel");
-else
-return ("consonant");
 }
