@@ -2,6 +2,12 @@
 
 using namespace std;
 
+class Z
+{
+    string name;
+
+}
+
 class Yu
 {
     private:
