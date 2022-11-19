@@ -1,11 +1,14 @@
-$NAME = zombie
+NAME = zombie
 
 CC = c++;
 
 FLAG = -Wall -Wextra -Werror -std=c++98 -O3
 
-SRCS = main.cpp \
-		Zombie.cpp \
+SRCS = src/main.cpp \
+		src/Zombie.cpp \
+
+DIR1 = \src
+DIR2 = \inc
 
 HEADERS = Zombie.hpp
 
@@ -28,10 +31,3 @@ fclean:		clean
 	$(RM) $(NAME)
 
 re: clean all
-
-
-
-
-
-
-
