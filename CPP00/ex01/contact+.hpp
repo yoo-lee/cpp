@@ -1,6 +1,3 @@
-#ifndef CONTACT_HPP
-#define CONTACT_HPP
-
 #include<iostream>
 #include<string>
 
@@ -16,6 +13,25 @@ class Contact
 	public:
 			void	fillcontact();
 			void	printfullContact();
-			void	printinitContact();
 };
-#endif
+
+
+class PhoneBook
+{
+	private:
+			Contact	contact[8];
+			int		length;
+			int		last;
+	public:
+			PhoneBook();
+			void	printContact(int i);
+			void	printPhoneBook();
+			void	searchContact();
+			void	addContact();
+};
+
+
+		void	Contact::fillcontact()
+		{
+			
+		}

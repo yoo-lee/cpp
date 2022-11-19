@@ -9,10 +9,10 @@ class PhoneBook
 			Contact	contact[8];
 			int		length;
 			int		last;
-			void	printContact(int i);
-			void	printPhoneBook();
 	public:
 			PhoneBook();
+			void	printContact(int i);
+			void	printPhoneBook();
 			void	searchContact();
 			void	addContact();
 };
