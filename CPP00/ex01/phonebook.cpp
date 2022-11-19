@@ -1,16 +1,16 @@
 
 #include "phonebook.hpp"
 
-void	Phonebook::printcontact(contract[8])
+void	PhoneBook::printContact(int i)
 {
-	std::cout << contract[8] <<std::endl;
+	std::cout << "         " << i << '|';
+	contact[i].printFormatedContact();
 }
-
 
 void Phonebook::addphonebook()
 {
 	Contact contact;
-	contact.fillcontact(); 
+	contact.fillcontact();
 
 	std::cout << phonebook.index << std::endl;
 }
@@ -21,15 +21,24 @@ void Phonebook::addphonebook()
 // ◦ The contact fields are: first name, last name, nickname, phone number, and
 // darkest secret. A saved contact can’t have empty fields.
 
-void	Phonebook::addContact()
+	void	searchContact()
+		{
+			printContact();
+			contact.fillcontact();
+		std::cout << phonebook.index << std::endl;
+		}
+
+
+void	addContact()
 {
-	Contact new_contact;
-	contact.fillContact();
-	contact.new_contact[last] = contact;
-	// while(last < 9)
-	// {
-	// 	last++
-	// }
+		fillcontact();
+		contact.new_contact[last] = contact;
+		this->contact[last] = contact;
+	last++;
+	if (last == 8)
+		last = 0;
+	if (length < 8)
+		length++;
 }
 
 void Phonebook::PhoneBook()
@@ -38,12 +47,3 @@ void Phonebook::PhoneBook()
 	std::cout<< PhoneBook.index <<std::endl;
 	std::cout<< PhoneBook.name <<std::endl;
 }
-
-// void Phonebook::search()
-// {
-// 	Phonebook phonebook;
-// 	std::cout << phonebook.index << std::endl;
-// 	std::cout << phonebook.name << std::endl;
-// 	std::cout << phonebook.family_name << std::endl;
-// 	std::cout << phonebook.nickname << std::endl;
-// }

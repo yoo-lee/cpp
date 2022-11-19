@@ -1,6 +1,8 @@
 SRCS			= phonebook.cpp \
 					contact.cpp \
 					main.c
+HEADERS		= contact.hpp \
+				phonebook.hpp
 OBJS			= $(SRCS:.cpp=.o)
 
 CPP				= clang++

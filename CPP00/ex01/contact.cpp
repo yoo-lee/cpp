@@ -36,7 +36,7 @@ void	Contact::fillContact()
 	if (std::cin.eof())
 	{
 		std::cout << "\n^D Error\n";
-		// exit (1);
+		exit (1);
 	}
 	else
 		std::cout << "Contact has been added!\n";

@@ -11,9 +11,8 @@ int main ()
     // cout <<str.find(c) << endl;
     if(str.find(c))
     {cout << "vowel" << endl;}
-    else 
+    else
     {cout << "consonant" << endl;}
-   
-    return 0;
 
+    return 0;
 }
