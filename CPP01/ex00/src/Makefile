@@ -4,12 +4,13 @@ CC = c++;
 
 FLAG = -Wall -Wextra -Werror -std=c++98 -O3
 
-SRCS = src/main.cpp \
-		src/Zombie.cpp \
+SRCS_DIR = sources/
+SRCS = main.cpp \
+		Zombie.cpp \
+		newZombie.cpp \
+		randomChump.cpp
 
-DIR1 = \src
-DIR2 = \inc
-
+INCS_DIR = includes/
 HEADERS = Zombie.hpp
 
 RM = rm -rf
