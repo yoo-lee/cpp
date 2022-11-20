@@ -1,10 +1,12 @@
-#include <iostream>
+#include "PhoneBook.hpp"
+#include <cstdio>
 
-int main ()
+
+int	main(void)
 {
-	std::string str;
-	Phonebook	phonebook;
-	
+	std::string	str;
+	PhoneBook	phonebook;
+
 	while (1)
 	{
 		std::cout << "Enter command: ";
@@ -17,9 +19,13 @@ int main ()
 			std::clearerr(stdin);
 		}
 		else if (str == "ADD")
-			phonebook.addcontact();
-		else 
-			std::cout << "command not found\n";
+			phonebook.addContact();
+		else if (str == "SEARCH")
+			phonebook.searchContact();
+		else if (str == "EXIT")
+			break ;
+		else
+			std::cout << "Command not found!\n";
 	}
-	return(0);
+	return (0);
 }

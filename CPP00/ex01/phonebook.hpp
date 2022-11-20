@@ -16,6 +16,8 @@ class PhoneBook
 			void	printPhoneBook();
 			void	searchContact();
 			void	addContact();
+			void 	addphonebook();
+
 };
 
 #endif

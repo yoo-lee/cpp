@@ -1,27 +1,30 @@
-SRCS			= phonebook.cpp \
-					contact.cpp \
-					main.c
-HEADERS		= contact.hpp \
-				phonebook.hpp
-OBJS			= $(SRCS:.cpp=.o)
+CC			= c++
+NAME		= phone_book
+SRCS		= main.cpp \
+				Contact.cpp \
+				PhoneBook.cpp
+HEADERS		= Contact.hpp \
+				PhoneBook.hpp
 
-CPP				= clang++
-RM				= rm -f
-CPPFLAGS		= -Wall -Wextra -Werror -I.
+CC_FLAGS	= -Wall -Wextra -Werror -std=c++98 -O3
+RM			= rm -f
 
-NAME			= phonebook
+OBJS = $(SRCS:.cpp=.o)
 
-all:			$(NAME)
+.PHONY: all clean fclean re
 
-$(NAME):		$(OBJS)
-				$(CPP) $(CPPFLAGS) -o $(NAME) $(OBJS)
+all:		$(NAME)
+
+$(NAME):	$(OBJS) $(HEADERS)
+	$(CC) $(SRCS) $(CC_FLAGS) -o $(NAME)
+
+%.o:		%.cpp $(HEADERS)
+	$(CC) $(CC_FLAGS) -c $< -o $@
 
 clean:
-				$(RM) $(OBJS)
+	$(RM) $(OBJS)
 
-fclean:			clean
-				$(RM) $(NAME)
+fclean:		clean
+	$(RM) $(NAME)
 
-re:				fclean $(NAME)
-
-.PHONY:			all clean fclean re
+re: clean all

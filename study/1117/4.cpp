@@ -1,4 +1,5 @@
 #include<iostream>
+#include<string>
 
 using namespace std;
 
@@ -6,23 +7,25 @@ class Z
 {
     private:
     string s;
+    char *s2;
     int n,m;
     public:
     Z();
-    Z(char y);
+    Z(char *y);
+    Z(string x);
     ~Z();
 };
 
-Z::Z()
-{
-    cout << "dfhoah" << endl;
-}
+    Z::Z(string x)
+    {
+        s = x;
+        cout << s << endl;
+    }
 
-
-Z::Z(char y)
+Z::Z(char *y)
 {
-    s = y;
-    cout << s << endl;
+    s2 = y;
+    cout << s2 << endl;
 }
 
 Z::~Z()
@@ -32,7 +35,7 @@ Z::~Z()
 
 int main()
 {
- Z x('a');
  Z y();
+ Z x("dfaf");
  return 0;   
 }

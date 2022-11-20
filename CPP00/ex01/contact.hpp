@@ -1,12 +1,13 @@
 #ifndef CONTACT_HPP
-#define CONTACT_HPP
+# define CONTACT_HPP
 
-#include<iostream>
-#include<string>
+# include <iostream>
+# include <string>
+# include <iomanip> 
 
 class Contact
 {
-    private:
+	private:
 			std::string	firstname;
 			std::string	lastname;
 			std::string	nickname;
@@ -14,8 +15,9 @@ class Contact
 			std::string	darkestsecret;
 			void		doFormating(std::string str);
 	public:
-			void	fillcontact();
-			void	printfullContact();
-			void	printinitContact();
+			void		fillContact();
+			void		printFullContact();
+			void		printFormatedContact();
 };
+
 #endif

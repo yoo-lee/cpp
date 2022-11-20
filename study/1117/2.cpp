@@ -25,7 +25,6 @@ class S
     int main ()
     {
         S y;
-        y.get("dfadfas");
+        y.get("dfaf");
         cout << y.set() << endl;
-        return 0;
     }
