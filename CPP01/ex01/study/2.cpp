@@ -1,6 +1,3 @@
-#include <iostream>
-
-using namespace std;
 
 #include <iostream>
 using namespace std;
@@ -9,16 +6,21 @@ using namespace std;
 
 int main(){
 
-  char *p1;
+  int *p1;
   int *p2;
+  char *p3;
 
   p1 = new int;         // (※) int 型変数１個のメモリ確保
 
   p2 = new int[SIZE];   // (※) int 型の配列 (要素数 SIZE) のメモリ確保
 
-  *p1 = "dhfaohsdf";
+  p3 = new char[8];   // (※) int 型の配列 (要素数 SIZE) のメモリ確保
+
+  *p1 = 1000;
+  *p3 = "abcdefg";
 
   cout << "p1 が指している整数型は: " << *p1 << "\n";
+  cout << "p1 が指している文字列は: " << *p3 << "\n";
 
   // p2 の利用部は各自で例を考えて書いてみること
 

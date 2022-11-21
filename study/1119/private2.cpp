@@ -10,6 +10,7 @@ class Zombie
 		
 	public:
 		void announce();
+		Zombie();
 		Zombie(string name);
 		~Zombie();
 };
@@ -19,6 +20,7 @@ class Zombie
 			m_name = name;
 			cout << m_name << endl;
 		}
+
 void Zombie::announce( void )
 {
     cout << "BraiiiiiiinnnzzzZ..." << endl;
@@ -28,8 +30,9 @@ int main ()
 {
     Zombie zom;
     Zombie zom2;
-    // zom.Zombie("dfasf");
-    zom.announce();
-    zom2.Zombie("dhfoa");
+	zom.Zombie();
+    zom.Zombie("dfasf");
+    // zom2.zom('d');
+    // zom.announce();
     return 0;
 }
