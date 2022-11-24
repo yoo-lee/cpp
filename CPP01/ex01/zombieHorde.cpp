@@ -26,10 +26,8 @@ Zombie* Zombie::zombieHorde( int N, std::string name )
 
 	for( int i = 0; i < N; ++i)
 	{
-		
-	}
-	Zombie (name);
 	zombieHorde[i].setZombieName(name + '_' + string) = new char(N);
+	}
 	return (zom);
 }
 
