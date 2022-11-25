@@ -17,15 +17,12 @@ class Z
     	~Z();
 };
 
-    // Z::Z(string x)
-    // {
-    //     s = x;
-    //     cout << s << endl;
-    // }
-
 
     Z::Z(string t)
     {
+        s2 = new char;
+        t = new char;
+        cin >> t;
         s2 = t;
         cout << s2 << endl;
     }

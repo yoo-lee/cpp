@@ -14,29 +14,29 @@ void	Contact::fillContact()
 	std::cout << "Input contact information:\n";
 
 	std::cout << "First Name: ";
-	std::cin >> std::ws;
+	// std::cin >> std::ws;
 	std::getline(std::cin, firstname);
 
 	std::cout << "Last Name: ";
-	std::cin >> std::ws;
+	// std::cin >> std::ws;
 	std::getline(std::cin, lastname);
 
 	std::cout << "Nickname: ";
-	std::cin >> std::ws;
+	// std::cin >> std::ws;
 	std::getline(std::cin, nickname);
 
 	std::cout << "Phone Number: ";
-	std::cin >> std::ws;
+	// std::cin >> std::ws;
 	std::getline(std::cin, phonenumber);
 
 	std::cout << "Darkest Secret: ";
-	std::cin >> std::ws;
+	// std::cin >> std::ws;
 	std::getline(std::cin, darkestsecret);
 
 	if (std::cin.eof())
 	{
 		std::cout << "\n^D Error\n";
-		// exit (1);
+		exit (1);
 	}
 	else
 		std::cout << "Contact has been added!\n";

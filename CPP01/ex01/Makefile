@@ -1,10 +1,9 @@
 CC			= c++
-NAME		= phone_book
-SRCS		= main.cpp \
-				contact.cpp \
-				phonebook.cpp
-HEADERS		= Contact.hpp \
-				phonebook.hpp
+NAME		= zombieHorde
+SRCS		= zombieHorde.cpp \
+				zombie.cpp \
+				main.cpp
+HEADERS		= Zombie.hpp
 
 CC_FLAGS	= -Wall -Wextra -Werror -std=c++98 -O3
 RM			= rm -f

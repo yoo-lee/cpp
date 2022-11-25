@@ -21,11 +21,6 @@ class Zombie
 			cout << m_name << endl;
 		}
 
-void Zombie::announce( void )
-{
-    cout << "BraiiiiiiinnnzzzZ..." << endl;
-}
-
 int main ()
 {
     Zombie zom;

@@ -4,40 +4,34 @@
 
 using namespace std;
 
-class Zombie
+
+void	Zombie::setzombiename(std::string name)
 {
-	private:
-		string z_name;
-	public:
-		Zombie();
-		Zombie(string name);
-		Zombie* zombieHorde( int N, std::string name );
-		~Zombie();
-};
+	z_name = name;
+}
 
 Zombie::Zombie(string name)
 {
 	z_name = name;
 }
 
+void announce(std::string name)
+{
+	cout << z_name << endl;
+}
+
 Zombie* Zombie::zombieHorde( int N, std::string name )
 {
-	Zombie *zombieHorde = new Zombie[N];
+	Zombie *zom = new Zombie[N];
 
 	for( int i = 0; i < N; ++i)
 	{
-		
+		zom[i].setZombiename(std::string name);
 	}
-	Zombie (name);
-	zombieHorde[i].setZombieName(name + '_' + string) = new char(N);
 	return (zom);
 }
 
-int main ()
-{
-	
 
-}
 // It must allocate N Zombie objects in a single allocation.
 //  Then, it has to initialize the
 // zombies, giving each one of them

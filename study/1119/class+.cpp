@@ -4,12 +4,12 @@ using namespace std;
 class old_sut
 {
 	private:
-		char * o_name;
 	public:
+		string o_name;
 		old_sut();
 		old_sut(string name);
 	void	set(char * s);
-	char * s get();
+	void 	 get();
 };
 
 void	set(char * s)
@@ -17,7 +17,7 @@ void	set(char * s)
 	o_name = s;
 }
 
-char * get()
+void get()
 {
 	cout << o_name << endl;	
 }
