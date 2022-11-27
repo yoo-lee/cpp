@@ -22,8 +22,12 @@ void Zombie::setZombieName(std::string name)
 {
     z_name = name;
 }
+			Zombie::Zombie()
+            {
+                std::cout << z_name << "appear" << std::endl;
+            }
 
 			Zombie::~Zombie()
             {
-                cout << "zombie is dead" << endl;
+                std::cout << z_name << " is dead" << std::endl;
             }
