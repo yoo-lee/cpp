@@ -1,8 +1,8 @@
 CC			= c++
-NAME		= zombieHorde
-SRCS		=
-				5.cpp
-HEADERS		= zombie.hpp
+NAME		= ZombieHorde
+SRCS		=	main.cpp \
+				Zombie.cpp
+HEADERS		= Zombie.hpp
 
 CC_FLAGS	= -Wall -Wextra -Werror -std=c++98 -O3
 RM			= rm -f
