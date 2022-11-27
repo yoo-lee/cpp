@@ -1,32 +1,59 @@
-#include <stdio.h>
+
+#include <cstring>
+#include <iostream>
+#include <string>
+
 using namespace std;
 
-int main()
+class Zombie
 {
-    char *pstr;
+	private:
+		string z_name;
+	public:
+		Zombie();
+		Zombie(string name);
+		Zombie* zombie( int N, std::string name );
+		// void printzombie();
+		// ~Zombie();
+};
+		Zombie::Zombie(string name)
+        {
+            z_name = name;
+            cout << z_name << endl;
+        }
 
-    pstr = new char[6];
-    pstr[0] = 1;
-    pstr[1] = 2;
-    pstr[2] = 3;
-    pstr[3] = 4;
-    pstr[4] = 5;
-    pstr[5] = 6;
-    pstr[6] = 50;
-    pstr[7] = 51;
-    // pstr[8] = 32;
-    // pstr[9] = 37;
-    // pstr[10] = 100;
-    // pstr[11] = 10;
-    // pstr[12] = 0;
-    int c;
-    
-    c = 0;
-    while(c < 13)
-    {
-        printf("%d\n" , pstr[c]);
-        c = c+1;
-    }
-	std::cout << pstr << std::endl;
-    return 0;
+		Zombie::Zombie()
+        {
+
+        }
+
+		// void Zombie::printzombie(string name)
+        // {
+        //     z_name = name;
+        //     cout << z_name << endl;
+        // }
+
+Zombie* Zombie::zombie( int N, std::string name )
+{
+    int i;
+    Zombie *zombie = new Zombie[i];
+    for(i = 0; i < N; i++)
+    zombie[i] = Zombie(name);
+    cout << zombie[0];
+    return (zombie);
+}
+void Zombie::Zombie(std::string name)
+{
+	this->name = name;
+}
+
+int main(void)
+{
+	int N = 10;
+	Zombie* zombies = zombie(N,"Zombie");
+
+	for (int i = 0; i < N; i++)
+		zombies[i].announce();
+	delete[] zombies;
+	return (0);
 }

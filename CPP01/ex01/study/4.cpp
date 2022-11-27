@@ -20,7 +20,7 @@ int main()
     // pstr[11] = 10;
     // pstr[12] = 0;
     int c;
-    
+
     // c = 0;
     // while(c < 13)
     // {

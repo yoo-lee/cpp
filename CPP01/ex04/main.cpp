@@ -17,5 +17,26 @@ int main (int ac, char ** av)
 std::string s1, s2;
 std::string filename = av[1];
 std::cout << av[1] << std::endl;
-
+std::string line;
+	size_t		pos;
+	size_t		rPos;
+	size_t		rSize = std::strlen(argv[2]);
+	while (std::getline(file, line))
+	{
+		rPos = 0;
+		while (true)
+		{
+			pos = line.find(argv[2], rPos);
+			if (pos == std::string::npos)
+			{
+				outputFile << line.substr(rPos, line.length() - rPos) << '\n';
+				break;
+			}
+			outputFile << line.substr(rPos, pos - rPos) << argv[3];
+			rPos = pos + rSize;
+		}
+	}
+	file.close();
+	outputFile.close();
+	return (0);
 }
