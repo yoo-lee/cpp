@@ -12,20 +12,7 @@ class Zombie
 		~Zombie();
 };
 
-
 Zombie* newZombie(std::string name);
 void randomChump(std::string name);
 
 #endif
-
-Zombie* newZombie(std::string name)
-{
-	this->name = name;
-	return (name);
-}
-
-
-void randomChump(std::string name)
-{
-	
-}

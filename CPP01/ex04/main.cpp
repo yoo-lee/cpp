@@ -1,4 +1,4 @@
-// Create a program that takes three parameters 
+// Create a program that takes three parameters
 // in the following order: a filename and
 // two strings, s1 and s2.
 // It will open the file <filename> and copies its content into a new file
@@ -17,5 +17,27 @@ int main (int ac, char ** av)
 std::string s1, s2;
 std::string filename = av[1];
 std::cout << av[1] << std::endl;
+std::ifstream file;
+std::string line;
 
+// std::ifstream;
+file.open(filename);
+// std::getline(filename ,line);
+	// std::ofstream outputFile;
+
+while (std::getline(file, line))
+	{
+		rPos = 0;
+		while (true)
+		{
+			pos = line.find(argv[2], rPos);
+			if (pos == std::string::npos)
+			{
+				outputFile << line.substr(rPos, line.length() - rPos) << '\n';
+				break;
+			}
+			outputFile << line.substr(rPos, pos - rPos) << argv[3];
+			rPos = pos + rSize;
+		}
+	}
 }
