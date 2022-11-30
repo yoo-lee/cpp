@@ -1,10 +1,10 @@
 CC			= c++
 NAME		= phone_book
 SRCS		= main.cpp \
-				Contact.cpp \
-				PhoneBook.cpp
+				contact.cpp \
+				phonebook.cpp
 HEADERS		= Contact.hpp \
-				PhoneBook.hpp
+				phonebook.hpp
 
 CC_FLAGS	= -Wall -Wextra -Werror -std=c++98 -O3
 RM			= rm -f
