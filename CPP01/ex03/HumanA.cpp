@@ -1,27 +1,15 @@
-class HumanA
-{
-    private:
-    string::Weapon;
-    string::name;
-    public:
-    HumanA(std::string name, Weapon &weapon);
-    attack(weapon type);
-};
+#include "HumanA.h"
 
-    HumanA(std::string name, Weapon &weapon)
+    HumanA::HumanA(std::string name, Weapon &weapon) : weapon(weapon)
     {
-        name 
-    }
-    attack()
-    {
-    std::cout << name <<attacks with their << weapon type << std::endl;
+        this -> a_name = name;
     }
 
-HumanA()
-takeweapon()
-{
-    HumanA = wepon;
-}
+    void HumanA::attack()git o
+    {
+        if (this -> weapon.getType().empty())
+        std::cout << this->name << "has no weapon"
+    }
 
 // HumanA and HumanB are almost the 
 // same except for these two tiny details:
