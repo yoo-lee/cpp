@@ -1,26 +1,33 @@
 #include "Zombie.hpp"
 
-void Zombie::announce()
+Zombie* zombieHorde(int N, std::string name)
 {
-	std::cout << name << ": BraiiiiiiinnnzzzZ...\n";
+    Zombie *z = new Zombie[N];;
+    int i;
+    for(i = 0; i < N; i++)
+    {
+    z[i] = Zombie();
+    z[i].setZombieName(name);
+    z[i].announce();
+    }
+    return (z);
 }
 
-Zombie::Zombie(std::string name)
+void Zombie::announce()
 {
-	this->name = name;
+	std::cout << z_name << ": BraiiiiiiinnnzzzZ...\n";
 }
 
 void Zombie::setZombieName(std::string name)
 {
-	this->name = name;
+    z_name = name;
 }
+			Zombie::Zombie()
+            {
+                std::cout << z_name << "appear" << std::endl;
+            }
 
-Zombie::~Zombie()
-{
-	std::cout << name << " is dead!\n";
-}
-
-Zombie::Zombie()
-{
-	std::cout << "<default> BraiiiiiiinnnzzzZ...\n";
-}
+			Zombie::~Zombie()
+            {
+                std::cout << z_name << " is dead" << std::endl;
+            }
