@@ -14,7 +14,7 @@ void	Contact::fillContact()
 {
 	std::cout << "Input contact information:\n";
 
-	std::cout << "First Name: ";
+	std::cout << "First Name: 05";
 	std::cin >> std::ws;
 	std::getline(std::cin, firstname);
 
