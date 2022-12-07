@@ -1,17 +1,23 @@
 #include "HumanA.h"
 #include "Weapon.h"
 
-    HumanA::HumanA(std::string name, Weapon &weapon) : weapon(weapon)
+    HumanA(std::string name)
 	{
 		this -> a_name = name;
 	}
 
-	void HumanA::attack()
+	~HumanA()
 	{
-		if (this -> weapon.getType().empty())
-		std::cout << this->a_name << "has no weapon";
-		else
-		std::cout << this->a_name << "attack with their" << weapon.getType() << std::endl;
+
+	}
+
+    setWeapon(Weapon &weapon)
+	{
+		this -> weapon = &weapon;
+	}
+    void attack();
+	{
+		std::cout << name << ""
 	}
 
 // HumanA and HumanB are almost the 
