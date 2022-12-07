@@ -1,9 +1,10 @@
 #include "HumanB.h"
 #include "Weapon.h"
 
-	HumanB::HumanB(std::string name, Weapon &weapon) : weapon(weapon)
+	HumanB::HumanB(std::string name)
 	{
-		this -> b_name = name;
+    	this->b_name = name;
+    	this->weapon = NULL;
 	}
 
 	void HumanB::attack()

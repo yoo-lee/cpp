@@ -6,6 +6,11 @@
 		this -> a_name = name;
 	}
 
+    setWeapon(Weapon &weapon)
+	{
+		weapon = weapon	
+	}
+
 	~HumanA()
 	{
 
@@ -15,11 +20,19 @@
 	{
 		this -> weapon = &weapon;
 	}
-    void attack();
+
+    void HumanA::attack()
 	{
-		std::cout << name << ""
+		if (this -> weapon.getType().empty())
+		std::cout << this->b_name << "has no weapon";
+		else
+		std::cout << this->b_name << "attack with their" << weapon.getType() << std::endl;
 	}
 
+
+// HumanA(std::string name);
+// 	~HumanA();
+//     void attack();
 // HumanA and HumanB are almost the 
 // same except for these two tiny details:
 // • While HumanA takes the 
