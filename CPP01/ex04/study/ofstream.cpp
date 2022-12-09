@@ -1,17 +1,45 @@
 #include <fstream>
 #include <string>
 using namespace std;
-int main(int argc, char *argv[]){
-    std::ofstream writing_file;
-    std::string filename = "text.txt";
-    writing_file.open(filename, std::ios::out);
-    std::string writing_text = "C++（シープラスプラス）は、汎用プログラミング言語のひとつである。";
-    writing_file << writing_text << std::endl;
-    writing_file.close();
-    return 0;
-}
 
+// int main(int argc, char *av[])
+// {
+//     std::ofstream o_file;
+//     std::string filename = av[1];
+//     o_file.open(filename, std::ios::out);
+//     std::string text;
+//     o_file << text <<std::endl;
+//     o_file.close();
+//     return 0;    }
+
+// int main(int argc, char *av[])
+// {
+//     std::ofstream file;
+//     std::string filename = av[1];
+//     file.open(filename);
+//     string text;
+//     file << text << endl;
+//     file.close();
+//     return 0;
+// }
+
+// int main(int argc, char *av[])
+// {
+//     ofstream file;
+//     string filename = av[1];
+//     file.open(filename);
+//     string text;
+//     file  << text <<endl;
+//     return (0);
+// }
+
+int main(int argc, char *av[])
+{
     ofstream file;
-    string file_name = "text.txt";
-    file.open(file_name, ios::out);
-    
+    string txt;
+    string filename = av[1];
+    file.open(filename);
+    string text;
+    file << text << endl;
+    return (0);
+}
