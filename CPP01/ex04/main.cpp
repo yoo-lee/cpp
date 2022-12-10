@@ -25,6 +25,9 @@ file.open(filename);
 // std::getline(filename ,line);
 	// std::ofstream outputFile;
 
+std::string pos;
+std::string rPos;
+
 while (std::getline(file, line))
 	{
 		rPos = 0;
