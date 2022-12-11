@@ -14,16 +14,22 @@
 
 int main (int ac, char ** av)
 {
-std::string s1, s2;
+std::string filename, filename_replace, s1, s2;
 std::string filename = av[1];
 std::cout << av[1] << std::endl;
-std::ifstream file;
 std::string line;
+std::fstream filein, fileout;
+filename_replace.append(".replace");
+s1 = av[2];
+s1 = av[3];
 
-// std::ifstream;
-file.open(filename);
+filein.open(filename);
 // std::getline(filename ,line);
 	// std::ofstream outputFile;
+while 
+
+
+
 
 std::string pos;
 std::string rPos;
@@ -44,3 +50,6 @@ while (std::getline(file, line))
 		}
 	}
 }
+
+// fail to be import 
+// output the file
