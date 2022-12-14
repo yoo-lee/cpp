@@ -1,10 +1,10 @@
-CC			= c++
 NAME		= ex00
+CC			= c++
 SRCS		= main.cpp \
 				Fix.cpp
 HEADERS		= Fix.h
 
-CC_FLAGS	= -Wall -Wextra -Werror -std=c++98 -O3
+CC_FLAGS	= -Wall -Wextra -Werror -std=c++98
 RM			= rm -f
 
 OBJS = $(SRCS:.cpp=.o)

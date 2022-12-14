@@ -29,12 +29,10 @@ POS::POS(const POS& p)
 
 int main()
 {
-    POS posA(100, 200, 300);     //  初期化
-    {
-        POS posB = posA;    //  コピーによる初期化
-
-        posB = posA;        //  代入
-    }
+    // POS posB;
+    POS posB;
+    POS posA;
+    posB = posA;
 
     return 0;
 }

@@ -21,11 +21,18 @@
 
     Fixed::~Fixed()
     {
-        std::cout << "deconstructor" << std::endl;
+        std::cout << "deconstructor\n" << std::endl;
     }
+
     void Fixed::setRawBits( int const raw )
     {
         Fixeded_point_number = raw;
+    }
+
+    Fixed& Fixed::operator=(const Fixed& x)
+    {
+        std::cout << "Copy assignment operator called" << std::endl;
+
     }
 
 //  Private members:
