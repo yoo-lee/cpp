@@ -1,5 +1,4 @@
 #include "Fix.h"
-
 #include <iostream>
 
 int main( void )

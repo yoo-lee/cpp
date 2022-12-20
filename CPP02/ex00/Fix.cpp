@@ -12,11 +12,16 @@
         *this = fix;
     }
 
+    void Fixed::setRawBits( int const raw )
+    {
+        this->Fixeded_point_number = raw;
+    }
+    
 // fixed to int
     int Fixed::getRawBits(void) const
     {
 	    std::cout << "getRawBits member function called\n";
-	    return (this->fractionalBits);
+	    return (this->Fixeded_point_number);
     }
 
     Fixed::~Fixed()
@@ -24,15 +29,13 @@
         std::cout << "deconstructor\n" << std::endl;
     }
 
-    void Fixed::setRawBits( int const raw )
-    {
-        Fixeded_point_number = raw;
-    }
+    
 
-    Fixed& Fixed::operator=(const Fixed& x)
+    Fixed& Fixed::operator=(const Fixed & x)
     {
         std::cout << "Copy assignment operator called" << std::endl;
-
+        this->Fixeded_point_number = x.getRawBits();
+        return (*this); 
     }
 
 //  Private members:

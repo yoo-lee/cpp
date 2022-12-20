@@ -13,16 +13,16 @@ class Fixed
     public:
     Fixed();
     Fixed(const Fixed& fixed);
+    Fixed& operator=(const Fixed &x);
+
     ~Fixed();
+// ◦ A member function int getRawBits( void ) const;
+// that returns the raw value of the Fixeded-point value.
     int getRawBits(void) const;
 
 // ◦ A member function void setRawBits( int const raw );
 // that sets the raw value of the Fixeded-point number.
     void setRawBits( int const raw );
-
-// ◦ A member function int getRawBits( void ) const;
-// that returns the raw value of the Fixeded-point value.
-
 };
 
 #endif

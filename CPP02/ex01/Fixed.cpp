@@ -1,22 +1,76 @@
+#include "Fixed.h"
 
-// Add public member functions to your class to overload the following operators:
+	Fixed::Fixed()
+    {
+        std::cout << "default constructor called"<<std::endl;
+        this->Fixeded_point_number = 0;
+    }
 
-// • The 6 comparison operators: >, <, >=, <=, == and !=.
-// • The 4 arithmetic operators: +, -, *, and /.
-// • The 4 increment/decrement (pre-increment and post-increment, pre-decrement and
-// post-decrement) operators, that will increase or decrease the fixed-point value from
+	Fixed::Fixed(const int x)
+    {
+        std::cout << "int constructor called"<<std::endl;
+        this -> Fixeded_point_number = x << this -> fractionalBits;
+    }
 
-// the smallest representable ϵ such as 1 + ϵ > 1.
-// Add these four public overloaded member functions to your class:
+    // float to a integer
+    Fixed::Fixed(const float float_n)
+    {
+        std::cout << "Float constructor called" << std::endl;
+        this->Fixeded_point_number = (int)(roundf(float_n * (1 << this->fractionalBits)));
+    }
 
-// • A static member function min that takes as parameters two references on fixed-point
-// numbers, and returns a reference to the smallest one.
+    Fixed::Fixed(const Fixed& obj)
+    {
+        std::cout << "Copy constructor called\n";
+        this -> Fixeded_point_number = obj.getRawBits(); 
+    }
 
-// • A static member function min that takes as parameters two references to constant
-// fixed-point numbers, and returns a reference to the smallest one.
+	Fixed & Fixed::operator=(const Fixed& obj)
+    {
+        std::cout << "Assigned operator called\n";
+        if (this != &obj)
+            this -> Fixeded_point_number = obj.getRawBits();
+        return(*this);
+    }
 
-// • A static member function max that takes as parameters two references on fixed-point
-// numbers, and returns a reference to the greatest one.
+    float Fixed::toFloat(void) const
+    {
+        return ((float)this-> Fixeded_point_number /(float)(1 << this-> fractionalBits) );
+    }
 
-// • A static member function max that takes as parameters two references to constant
-// fixed-point numbers, and returns a reference to the greatest one.
+	int Fixed::toInt( void ) const
+    {
+        return (this-> Fixeded_point_number >> fractionalBits);
+    }
+
+	std::ostream & operator << (std::ostream &x, Fixed const i)
+    {
+        x << i.toFloat();
+        return(x);
+    }
+    
+	int 	Fixed::getRawBits(void) const
+    {
+        std::cout << "getRawBits member function called" << std::endl;
+        return (this -> Fixeded_point_number);
+    }
+
+	void	Fixed::setRawBits(int const raw)
+    {
+        this->Fixeded_point_number = raw;
+    }
+
+    Fixed::~Fixed()
+    {
+        std::cout << "deconstructor called"<<std::endl;
+    }
+	
+
+
+
+
+
+
+
+
+

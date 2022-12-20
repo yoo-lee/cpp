@@ -1,2 +1,0 @@
-git restore --staged megaphone_copy.cpp
-git restore --staged .old
