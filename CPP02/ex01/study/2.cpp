@@ -5,6 +5,8 @@ class Foo
 public:
     static int num;
     Foo() {};
+	Foo(int n) {};
+	Foo(int n, int s) {};
     ~Foo() {};
 };
 

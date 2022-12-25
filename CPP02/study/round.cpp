@@ -7,5 +7,5 @@ int main(void)
     printf( "%f\n", round(3.25) );
     printf( "%f\n", round(-3.25) );
     printf( "%f\n", round(0.0) );
-    printf( "%f\n", round(float_n(1 << 8));
+    printf( "%f\n", round(float_n(1 << 8)));
 }

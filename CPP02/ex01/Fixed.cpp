@@ -16,6 +16,7 @@
     Fixed::Fixed(const float float_n)
     {
         std::cout << "Float constructor called" << std::endl;
+		std::cout << (int)(roundf(float_n * (1 << this->fractionalBits)))  << std::endl;
         this->Fixeded_point_number = (int)(roundf(float_n * (1 << this->fractionalBits)));
     }
 

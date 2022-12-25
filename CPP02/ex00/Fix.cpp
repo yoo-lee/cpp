@@ -29,8 +29,6 @@
         std::cout << "deconstructor\n" << std::endl;
     }
 
-    
-
     Fixed& Fixed::operator=(const Fixed & x)
     {
         std::cout << "Copy assignment operator called" << std::endl;
@@ -38,6 +36,12 @@
         return (*this); 
     }
 
+	// Fixed& Fixed::operator=(const Fixed& obj)
+	// {
+	// 	std::cout << "copy assignment operato"
+	// 	this-> Fixeded_point_number = obj.getRawBits();
+	// 	return (*this)
+	// }
 //  Private members:
 // ◦ An integer to store the fixed-point number value.
 // ◦ A static constant integer to store the number of fractional bits. Its value
