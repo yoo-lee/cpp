@@ -1,12 +1,14 @@
 #ifndef ANIMAL_H
 #define ANIMAL_H
 
+#include <iostream>
+#include <string>
 class Animal
 {
 	public:
 	Animal();
 	Animal(const Animal &obj);
-	virtual ~Animal();
+	~Animal();
 
 	Animal &operator = (const Animal &obj);
 	virtual void makesound() const;
@@ -16,7 +18,7 @@ class Animal
 	std::string type;
 };
 
-std:: ostream	&operator<<(std:: &ostream, const Animal &instanse)
+// std:: ostream	&operator<<(std:: &ostream, const Animal &instanse)
 
 class Cat : public Animal
 {

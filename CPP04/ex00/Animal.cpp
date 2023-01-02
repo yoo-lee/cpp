@@ -1,43 +1,43 @@
 	#include "Animal.h"
 
-	Animal() : type("") 
+	Animal::Animal() : type("") 
 	{
-		std::cout << "Default constructor for Animal\n" 
+		std::cout << "Default constructor for Animal\n";
 	}
 
-	Animal(const Animal &obj)
+	Animal::Animal(const Animal &obj)
 	{
-		std::cout << "copy constructor for Animal\n" 
+		std::cout << "copy constructor for Animal\n";
 		*this = obj;
 	}
 
-	virtual ~Animal()
+	Animal::~Animal()
 	{
-		std::cout << "Deconstructor for Animal\n" 
+		std::cout << "Deconstructor for Animal\n"; 
 	}
 
-	Animal &operator = (const Animal &obj)
+	Animal& Animal::operator = (const Animal &obj)
 	{
-		std::cout << "Assigment constructor for Animal\n" 
+		std::cout << "Assigment constructor for Animal\n";
 		this->type = obj.getType();
 		return *this; 
 	}
 	
-	virtual void makesound() const
+	void Animal::makesound() const
 	{
-		std::cout << "Paooon bowmyao\n" 
+		std::cout << "Paooon bowmyao\n"; 
 	}
 
-	const std::string &getType() const
+	const std::string &Animal::getType() const
 	{
 		return (this->type);
 	}	
 
-	std:: ostream	&operator<<(std:: &ostream, const Animal &instance)
-	{
-		ostream << instance.getType();
-		return ostream;
-	}
+	// std:: ostream	Animal::&operator<<(std:: &ostream, const Animal &instance)
+	// {
+	// 	ostream << instance.getType();
+	// 	return ostream;
+	// }
 
 
 // For every exercise, you have to provide the most complete tests you can.
