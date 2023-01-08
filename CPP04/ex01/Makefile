@@ -1,10 +1,11 @@
-NAME		= ex00
+NAME		= ex01
 
 CC			= c++
 SRCS		= main.cpp \
 			Animal.cpp \
 			Cat.cpp \
 			Dog.cpp \
+			Brain.cpp \
 			WrongAnimal.cpp \
 			WrongCat.cpp
 

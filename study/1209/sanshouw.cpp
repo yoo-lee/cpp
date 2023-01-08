@@ -36,5 +36,6 @@ int main ()
     // string p = "dfnoah";
     // cout << "&p="<< &p <<endl;
     // f(p);
+	system("leaks -q ./a.out");
     return 0;
 }

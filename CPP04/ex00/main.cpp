@@ -1,4 +1,6 @@
 	#include "Animal.h"
+	#include "WrongAnimal.h"
+	#include "WrongCat.h"
 
 int main()
 {
@@ -7,8 +9,8 @@ const Animal* j = new Dog();
 const Animal* i = new Cat();
 std::cout << j->getType() << " " << std::endl;
 std::cout << i->getType() << " " << std::endl;
-i->makesound(); //will output the cat sound!
-j->makesound();
-meta->makesound();
+i->makeSound(); //will output the cat sound!
+j->makeSound();
+meta->makeSound();
 return 0;
 }

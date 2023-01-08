@@ -5,7 +5,7 @@
 		std::cout << "Default constructor for Animal\n";
 	}
 
-	Animal::Animal(const Animal &obj)
+	Animal::Animal(const Animal &obj) : type("") 
 	{
 		std::cout << "copy constructor for Animal\n";
 		*this = obj;
@@ -23,7 +23,7 @@
 		return *this; 
 	}
 	
-	void Animal::makesound() const
+	void Animal::makeSound() const
 	{
 		std::cout << "Paooon bowmyao\n"; 
 	}
@@ -33,11 +33,11 @@
 		return (this->type);
 	}	
 
-	// std:: ostream	Animal::&operator<<(std:: &ostream, const Animal &instance)
-	// {
-	// 	ostream << instance.getType();
-	// 	return ostream;
-	// }
+	std:: ostream	&operator<<(std::ostream &ostream, const Animal &instance)
+	{
+		ostream << instance.getType();
+		return ostream;
+	}
 
 
 // For every exercise, you have to provide the most complete tests you can.
@@ -54,7 +54,4 @@
 // Every animal must be able to use the member function:
 // makeSound()
 // It will print an appropriate sound (cats don’t bark).
-// 5
-// C++ - Module 04 Subtype polymorphism, abstract classes, interfaces
-// Running this code should print the specific sounds of the Dog and Cat classes, not
-// the Animal’s.
+

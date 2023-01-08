@@ -4,7 +4,7 @@ class Human
 {
 	public:
     //仮想関数
-    void speak() const
+    virtual void speak() const
     {
         std::cout << "Hello." << std::endl;
     }
@@ -20,10 +20,18 @@ class Human
 //     }
 // };
 
+// class Kor :public Human{
+// 	public:
+// 	void speak( ) const
+// 	{
+// 		std::cout << "fhoai\n";
+// 	}
+// };
+
 class Jap :public Human
 {
 	public :
-	void speak() const
+	virtual void speak() const
 	{
         std::cout << "chimpo。" << std::endl;
 	}
@@ -32,9 +40,9 @@ class Jap :public Human
 class U : public Human
 {
 	public :
-	void speak() const
+	virtual  void speak() const
 	{
-        std::cout << "gyao。" << std::endl;
+        std::cout << "gyao000。" << std::endl;
 	}
 };
 
@@ -49,10 +57,11 @@ int main()
     Human john;
     Jap taro;
     U Yuri;
-
+	// Kor unchi;
     action(john);
     action(taro);
     action(Yuri);
+    // action(unchi);
 
     std::cin.get();
 }

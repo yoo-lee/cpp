@@ -53,4 +53,6 @@ int main()
     student.SetData("Saitou Hiroyuki", 2, 80, &ikeda);
 
     ikeda.IncAge();
+	system("leaks -q ./a.out");
+
 }

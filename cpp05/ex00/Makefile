@@ -2,15 +2,9 @@ NAME		= ex00
 
 CC			= c++
 SRCS		= main.cpp \
-			Animal.cpp \
-			Cat.cpp \
-			Dog.cpp \
-			WrongAnimal.cpp \
-			WrongCat.cpp
+			Bureaucrat.cpp \
 
-HEADERS		= Animal.h \
-				WrongAnimal.h \
-				WrongCat.h
+HEADERS		= Bureaucrat.h
 
 CC_FLAGS	= -Wall -Wextra -Werror -std=c++98
 RM			= rm -f
