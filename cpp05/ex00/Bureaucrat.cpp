@@ -1,92 +1,72 @@
-	#include "Bureaucrat.h"
-	
-	Bureaucrat::Bureaucrat()
-	{
-		if (Bureaucrat::verbose)
-		std::cout << "Default constructor for Bureaucrat called\n"
-		_name = "";
-		_grade = Bureaucrat::lowestGrade;
-	}
+#include "Bureaucrat.h"
 
-	Bureaucrat::Bureaucrat( const std::string &name, int grade )
-	{
-		checkGrade();
-		if (Bureaucrat::verbose)
-		std::cout << "Standard constructor for Bureaucrat called\n";
-		this->_name = name;
-		this->_grade = grade;
-	}
+// bool t_bool = false;
 
-	Bureaucrat::Bureaucrat(const Bureaucrat &obj)
-	{
-		checkGrade();
-		if (Bureaucrat::verbose)
-		std::cout << "Copy constructor for Bureaucrat called\n";
-		*this = obj;
-	}
+Bureaucrat::Bureaucrat() : name(""), grade(MIN_GRADE)
+{
+}
 
-	Bureaucrat::~Bureaucrat()
-	{
-		if (Bureaucrat::verbose)
-		std::cout << "Deconstructor for Bureaucrat called\n";
-	}
+Bureaucrat::Bureaucrat(const std::string& name, int grade) : name(name), grade(grade)
+{
+	if (grade < MAX_GRADE)
+		throw GradeTooHighException();
+	if (grade > MIN_GRADE)
+		throw GradeTooLowException();
+}
 
-	Bureaucrat &Bureaucrat::operator=(const Bureaucrat &obj)
-	{
-		this->_grade = obj._grade;
-		std::cout << "Name is const and cant be overwritten\n";
-		if (Bureaucrat::verbose)
-		std::cout << "Assigment constructor called\n";
-		return (*this);
-	}
+Bureaucrat::Bureaucrat(const Bureaucrat& src)
+{
+	*this = src;
+}
 
-	const std::string	&Bureaucrat::getName() const
-	{
-		return this->_name;
+Bureaucrat& Bureaucrat::operator=(const Bureaucrat& src) {
+	if (&src != this) {
+		const_cast<std::string&>(name) = src.name;
+		grade = src.grade;
 	}
+	return (*this);
+}
 
-	const int	&Bureaucrat::getGrade() const
-	{
-		return this->_grade;
-	}
+Bureaucrat::~Bureaucrat()
+{
+}
 
-	void Bureaucrat::incrementGrade(int quantity)
-	{
-		if (Bureaucrat::verbose)
-		std::cout << "IncrementGrade called\n"
-		<< quantity<< std::endl;
-	this->_grade -= quantity;
-		checkGrade();
-	}
-	void Bureaucrat::decrementGrade(int quantity)
-	{
-		if (Bureaucrat::verbose)
-		std::cout << "DecrementGrade called\n"
-		<< quantity<< std::endl;
-	this->_grade += quantity;
-		checkGrade();
-	}
+const std::string& Bureaucrat::getName() const
+{
+	return (name);
+}
 
-	void Bureaucrat::checkGrade() const
-	{
-		if (this -> _grade < Bureaucrat::highestGrade)
-			throw Bureaucrat::GradeTooHigh();
-		else if (this -> _grade < Bureaucrat::lowestGrade)
-			throw Bureaucrat::GradeTooLow();
-	}
+int Bureaucrat::getGrade() const
+{
+	return (grade);
+}
 
-	Bureaucrat::Bureaucrat(const std::string &name, int grade):_name(name), _grade(grade)
-	{
-		checkGrade();
-		if (Bureaucrat::verbose)
-		std::cout << "Standard constructor for Bureaucrat called\n";
-	}
+void Bureaucrat::incrementGrade()
+{
+	if (grade == MAX_GRADE)
+		throw GradeTooHighException();
+	--grade;
+}
 
-	
-	std::ostream	&operator<<(std::ostream &ost, const Bureaucrat &obj)
-	{
-		ost << obj.getName() << "Bureaucrat grade " << obj.getGrade();
-		return ost;
-	}
+void Bureaucrat::decrementGrade()
+{
+	if (grade == MIN_GRADE)
+		throw GradeTooLowException();
+	++grade;
+}
 
-	bool Bureaucrat::verbose = false;
+const char* Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return ("Error: grade is too high!");
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return ("Error: grade is too low!");
+}
+
+std::ostream& operator<<(std::ostream& outputStream, const Bureaucrat& obj)
+{
+	outputStream << obj.getName() << ", bureaucrat grade " << obj.getGrade();
+	return (outputStream);
+}

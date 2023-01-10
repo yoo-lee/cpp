@@ -1,59 +1,41 @@
-#ifndef BUREAUCRAT_H
-# define BUREAUCRAT_H
+#ifndef BUREAUCRAT_HPP
+# define BUREAUCRAT_HPP
 
-#include <iostream>
-#include <stdexcept>
+# include <string>
+# include <iostream>
 
 class Bureaucrat
 {
-public:
+	private:
+			const std::string name;
+			int grade;
+			static const int MAX_GRADE = 1;
+			static const int MIN_GRADE = 150;
+	public:
+			Bureaucrat();
+			Bureaucrat(const std::string& name, int grade);
+			Bureaucrat(const Bureaucrat& src);
+			Bureaucrat& operator=(const Bureaucrat& src);	
+			~Bureaucrat();
 
-	Bureaucrat (const std::string &name, int grade);
-	Bureaucrat(const Bureaucrat &obj);
-	~Bureaucrat();
-
-	Bureaucrat &operator=(const Bureaucrat &obj);
-
-	const std::string	&getName() const;
-	const int	&getGrade() const;
-
-	void incrementGrade(int quantity);
-	void decrementGrade(int quantity);
-
-	static bool verbose;
-
-private:
-
-	const std::string _name;
-	int					_grade;
-
-	static const int lowestGrade = 150;
-	static const int highestGrade = 1;
-
-	Bureaucrat();
-	void checkGrade() const;
-
-public:
-
-	class GradeTooHigh : public std::exception
-	{
-		public:
-			virtual const char* what() const throw()
+			const std::string& getName() const;
+			int getGrade() const;
+			void incrementGrade();
+			void decrementGrade();			
+						
+			class GradeTooHighException : public std::exception
 			{
-				return("The grade you set is too high");
-			}
-	};
+				public:
+						const char* what() const throw();
+			};
 
-	class GradeTooLow : public std::exception
-	{
-		public:
-			virtual const char* what() const throw()
+			class GradeTooLowException : public std::exception
 			{
-				return("The grade you set is too low");
-			}
-	};
-	
+				public:
+						const char* what() const throw();
+			};
 };
-	std::ostream	&operator<<(std::ostream &ost, const Bureaucrat &obj)
+
+std::ostream& operator<<(std::ostream& outputStream, const Bureaucrat& obj);
 
 #endif

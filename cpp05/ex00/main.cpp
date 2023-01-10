@@ -1,69 +1,42 @@
 #include "Bureaucrat.h"
 
-void	sectionTitle(const std::string& title)
+int main()
 {
-	std::cout	<< std::endl
-				<< "*** " << title << " ***"
-				<< std::endl << std::endl;
-}
-
-int	main() {
-	sectionTitle("constructor");
-
-	try {
-		Bureaucrat	pippo("pippo", 1);
-		std::cout << pippo;
+	try
+	{
+		Bureaucrat bureaucrat("Thomas", 1337);
 	}
-	catch (std::exception& e) {
-		std::cout << "Error: " << e.what() << std::endl;
+	catch (std::exception & e)
+	{
+		std::cout << e.what() << "\n";
 	}
 
-	try {
-		Bureaucrat	poppi("poppi", -42);
-		std::cout << poppi;
+	try
+	{
+		Bureaucrat bureaucrat("Mark", 0);
 	}
-	catch (std::exception& e) {
-		std::cout << "Error: " << e.what() << std::endl;
-	}
+	catch (std::exception & e)
+	{
+		std::cout << e.what() << "\n";
+	}	
 
-
-	try {
-		Bureaucrat	poppi("poppi", 4242);
-		std::cout << poppi;
+	try
+	{
+		Bureaucrat bureaucrat("Bob", 1);
+		bureaucrat.incrementGrade();
 	}
-	catch (std::exception& e) {
-		std::cout << "Error: " << e.what() << std::endl;
+	catch (std::exception & e)
+	{
+		std::cout << e.what() << "\n";
 	}
-
-	sectionTitle("increment");
 
 	try {
-		Bureaucrat	pippo("pippo", 12);
-		std::cout << pippo;
-		pippo.incrementGrade(10);
-		std::cout << pippo;
-		pippo.incrementGrade();
-		std::cout << pippo;
-		pippo.incrementGrade(); // too high!
-		std::cout << pippo;
+		Bureaucrat bureaucrat("Jake", 150);
+		bureaucrat.decrementGrade();
 	}
-	catch (std::exception& e) {
-		std::cout << "Error: " << e.what() << std::endl;
+	catch (std::exception& e)
+	{
+		std::cout << e.what() << "\n";
 	}
-
-	sectionTitle("decrement");
-
-	try {
-		Bureaucrat	pippo("pippo", 139);
-		std::cout << pippo;
-		pippo.decrementGrade(10);
-		std::cout << pippo;
-		pippo.decrementGrade();
-		std::cout << pippo;
-		pippo.decrementGrade(); // too low!
-		std::cout << pippo;
-	}
-	catch (std::exception& e) {
-		std::cout << "Error: " << e.what() << std::endl;
-	}
+	return (0);
 }
