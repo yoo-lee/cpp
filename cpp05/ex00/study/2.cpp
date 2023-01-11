@@ -1,16 +1,22 @@
-#include <iostream>
+#include <stdio.h>
 
-
-class Foo
-{};
-int main()
+bool verbose;
+int setVerbose(bool v)
 {
-try 
-{
-	Foo *p = new Foo();
-} 
-catch (std::bad_alloc e) 
-{
-	std::cerr << e.what() << std::endl;
+    // errormsg = "";
+    verbose = v;
+    if (verbose == v)
+        return 0;
+    else
+        return -1;
 }
+
+int main ()
+{
+	if(setVerbose(verbose))
+	{
+		return(0);
+	}
+	else
+	return(1);
 }
