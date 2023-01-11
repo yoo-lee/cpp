@@ -4,7 +4,8 @@ int main()
 {
 	try
 	{
-		Bureaucrat bureaucrat("Thomas", 1337);
+		Bureaucrat bureaucrat("yoo", 1370);
+		// std::cout << bureaucrat.getName() << "\n";
 	}
 	catch (std::exception & e)
 	{
@@ -13,7 +14,7 @@ int main()
 
 	try
 	{
-		Bureaucrat bureaucrat("Mark", 0);
+		Bureaucrat bureaucrat("lee", 0);
 	}
 	catch (std::exception & e)
 	{
