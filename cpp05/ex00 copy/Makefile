@@ -1,12 +1,14 @@
-NAME		= ex00
+NAME		= ex01
 
 CC			= c++
 SRCS		= main.cpp \
 			Bureaucrat.cpp \
+			Form.cpp
 
-HEADERS		= Bureaucrat.h
+HEADERS		= Bureaucrat.h \
+			Form.h
 
-CC_FLAGS	= -Wall -Wextra -Werror -std=c++98
+CC_FLAGS	= -Wall -Wextra -Werror
 RM			= rm -f
 
 OBJS = $(SRCS:.cpp=.o)

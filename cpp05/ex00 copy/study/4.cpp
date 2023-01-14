@@ -1,17 +1,18 @@
-#include <iostream>
-#include <stdexcept>
+#include<iostream>
+using namespace std;
 
-void f()
+void Kitty(bool b) 
 {
-	throw 123;
-}
-
-int main ()
-{
-	try
-	{
-		f();
+	try {
+		if (b) throw 10.1;
+		else throw 100;
 	}
-	catch (int i){}
+	catch (double e) { cout << "Exception : " << e << '\n'; }
+	catch (...) { cout << "Exception : Kitty()\n"; }
 }
 
+int main() {
+	// Kitty(true);
+	Kitty(false);
+	return 0;
+}

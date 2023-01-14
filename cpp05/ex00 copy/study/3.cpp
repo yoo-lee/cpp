@@ -1,18 +1,24 @@
 #include <iostream>
-#include <stdexcept>
+using namespace std;
 
-double divide(double a, double b)
+void Chobits(bool b) 
 {
-// 例えば 0 で割ろうとしたときに std::range_error 例外を発生させます。
-	if (b == 0)
-	{
-		throw std::range_error("Divided by zero.");
-	}
-	return a / b;
+	if (b) cout << "Chobits\n";
+	else throw "Chobits()";
 }
 
-int main()
+void Kitty(bool b) 
 {
-	double a, b;
-	printf("%f",divide(1.1, 0));
+	Chobits(b);
+}
+
+int main() {
+	try { 
+		// Kitty(true);
+		Kitty(false);
+	}
+	catch (char *e) 
+	{ cout << "Exception : " << e << '\n'; }
+
+	return 0;
 }
