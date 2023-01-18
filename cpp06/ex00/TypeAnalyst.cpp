@@ -59,9 +59,9 @@
 	{
 		this->_selectedType = TypeAnalyst::noType;
 		this-> _charScalar = 0;
-	this->_intScalar = 0;
-	this->_floatScalar = 0;
-	this->_doubleScalar = 0;
+		this->_intScalar = 0;
+		this->_floatScalar = 0;
+		this->_doubleScalar = 0;
 	}
 	bool	getType( char *input )
 	{
@@ -71,11 +71,45 @@
 		if ((input[0] >= '0' && input[0] <= '9') || input[0] == '-'
 			|| input[0] == '.')
 			{
-				
+				this -> _selectedType = handle_numeric_values(input);
+				if (this-> selectedType != TypeAnalyst::noType)
+					return true;
 			}
+			if (input[1])
+				return false;
 	}
-	void	setVariable( char *input );
-	int		handle_special_cases( char *input ) const;
+	void	setVariable( char *input )
+	{
+		if (this -> _selectedType == TypeAnalyst::charType)
+			{
+				if(TypeAnalyst::t_bool)
+					std::cout << "Selected char type" << std::endl;
+				this ->_charScalar = input[0];
+			}
+		else if (this->_selectedType == TypeAnalyst::intType)
+		{
+		if (TypeAnalyst::t_bool)
+					std::cout << "Selected int type" << std::endl;
+		this -> _intscalar = atoi(input);
+		}
+		else if (this->_selectedType == TypeAnalyst::floatType)
+		{
+		if (TypeAnalyst::t_bool)
+					std::cout << "Selected float type" << std::endl;
+		this -> _intscalar = atof(input);
+		}
+		else if (this->_selectedType == TypeAnalyst::doubleType)
+		{
+		if (TypeAnalyst::t_bool)
+					std::cout << "Selected double type" << std::endl;
+		this -> _intscalar = atof(input);
+		}
+	}
+	int		handle_special_cases( char *input ) const
+	{
+		const std::stringspecial_doubles[] =
+		{" inf", "+inf"}
+	}
 	int		handle_numeric_values( char *input ) const;
 	void	printChar( void );
 	bool	canConvertToChar( double number );

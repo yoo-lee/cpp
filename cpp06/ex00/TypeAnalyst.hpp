@@ -20,7 +20,7 @@ class TypeAnalyst
 	static bool t_bool;
 
 	private: 
-		int		_selectedType;
+	int		_selectedType;
 	char	_charScalar;
 	int		_intScalar;
 	float	_floatScalar;
@@ -37,7 +37,6 @@ class TypeAnalyst
 	void	printInt( void );
 	void	printFloat( void );
 	void	printDouble( void );
-
 
 	static const int noType = -1;
 	static const int charType = 0;
