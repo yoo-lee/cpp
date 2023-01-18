@@ -41,33 +41,16 @@ void put_float_to_int_char(float num)
 
 void put_float(float value, int num, int flag)
 {
-	if (num == 6 || ((flag == FLAG_DECIMAL_ZERO)))
+	if (num == 6 || ((flag == FLAG_DECIMAL_ZERO || flag == FLAG_INT) && num < 6))
+	{
+		std::cout << "float: " << value << ".0f" << std::endl;
+ 	}
+	else
+	{
+		std::cout << "float: " << value << "f" << std::endl;
+	}
 }
 
-int main (int ac, char *av[])
-{
-
-	if (ac != 2)
-{
-	std::cout << "only one argument" << std::endl;
-	return 0;
-}
-
-std::string str(av[1]);
-// int num;
-// // int flag = check_num_exit(str, num);
-
-// if (flag < 0)
-// return 0;
-
-// if (flag == FLAG_CHAR)
-// {
-	char c = str[0];
-	std::cout << "char: " << c << std::endl;
-	std::cout << "int: " << static_cast<int>(c) << std::endl;
-	std::cout << "float: " << static_cast<float>(c) << std::endl;
-	std::cout << "double: " << static_cast<double>(c) << std::endl;
-// }
 int check_num_exit(const std::string& str, int &num)
 {
 	if (str.length() == 1 && (str[0] < '0' || '9' < str[0]))
@@ -82,6 +65,65 @@ int check_num_exit(const std::string& str, int &num)
 	}
 
 	num = 0;
+	bool dot_flag = false;
+	int decimal_zero_flag = true;
+	bool zero_flag = false;
+	for (size_t i =0; i < str.length(); ++i)
+	{
+		if (str[i] == '.')
+		{
+			if (dot_flag)
+			{
+				std::cout << str << " cant convert" << std::endl;
+				return -1;
+			}
+			dot_flag = true;
+		}
+		else if ('0' <= str[i] && str[i] <= '9')
+		{
+			if(!str[i])
+			{
+				zero_flag = true;
+				if (dot_flag)
+				{
+					decimal_zero_flag = false;
+				}
+				if (zero_flag && !dot_flag)
+            {
+                ++num;
+            }
+        }
+			}
+		}
+	}
+}
+
+int main (int ac, char *av[])
+{
+
+	if (ac != 2)
+	{
+	std::cout << "only one argument" << std::endl;
+	return 0;
+	}
+
+	std::string str(av[1]);
+	int num;
+	int flag = check_num_exit(str, num);
+
+if (flag < 0)
+{
+return 0;
+}
+return 0;
+
+if (flag == FLAG_CHAR)
+{
+	char c = str[0];
+	std::cout << "char: " << c << std::endl;
+	std::cout << "int: " << static_cast<int>(c) << std::endl;
+	std::cout << "float: " << static_cast<float>(c) << std::endl;
+	std::cout << "double: " << static_cast<double>(c) << std::endl;
 }
 // bool int_flag = false;
 // if (flag == FLAG_INT)
@@ -107,6 +149,23 @@ int check_num_exit(const std::string& str, int &num)
 	}
 	catch(const std::exception& e) {}
 
+	double double_num = 0;
+	bool double_flag = false;
+	try
+	{
+		double_num = std::stod(str);
+		double_flag = true;
+	}
+	catch(const std::exception& e) {}
+
+	float float_num = 0;
+	bool float_flag = false;
+	try
+	{
+		float_num = std::stof(str);
+		float_flag = true;
+	}
+	catch(const std::exception& e) {}
 }
 
 // You have to handle these pseudo literals as well (you know, for science): -inff, +inff
