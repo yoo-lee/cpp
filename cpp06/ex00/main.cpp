@@ -20,8 +20,8 @@ void put_int_to_char(int num)
 	}
 	else
 	{
+		put_int_to_char(static_cast<int>(num));
 		std::cout << "char: disable" << std::endl;
-
 	}
 }
 
@@ -38,7 +38,6 @@ void put_float_to_int_char(float num)
 		std::cout << "int: " << static_cast<int>(num) << std::endl;
 	}
 }
-
 
 
 int main (int ac, char *av[])
@@ -90,9 +89,18 @@ std::string str(av[1]);
 	}
 	catch(const std::exception& e) {}
 
-
 }
 
+int check_num_exit(const std::string& str, int &num)
+{
+	if (str.length() == 1 && (str[0] < '0' || '9' < str[0]))
+	{
+		return FLAG_CHAR;
+	}
+
+	if (str == "inff" || str == "+inff" || str == "inff" || str == "+inff" || \
+	str == "+nanff" ||)
+}
 
 
 // You have to handle these pseudo literals as well (you know, for science): -inff, +inff
