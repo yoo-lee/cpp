@@ -39,6 +39,10 @@ void put_float_to_int_char(float num)
 	}
 }
 
+void put_float(float value, int num, int flag)
+{
+	if (num == 6 || ((flag == FLAG_DECIMAL_ZERO)))
+}
 
 int main (int ac, char *av[])
 {
@@ -64,7 +68,21 @@ std::string str(av[1]);
 	std::cout << "float: " << static_cast<float>(c) << std::endl;
 	std::cout << "double: " << static_cast<double>(c) << std::endl;
 // }
+int check_num_exit(const std::string& str, int &num)
+{
+	if (str.length() == 1 && (str[0] < '0' || '9' < str[0]))
+	{
+		return FLAG_CHAR;
+	}
 
+	if (str == "-inff" || str == "+inff" || str == "inff" || str == "nanf" || \
+        str == "-inf" || str == "+inf" || str == "inf" || str == "nan")
+    {
+	return FLAG_SPECIAL;
+	}
+
+	num = 0;
+}
 // bool int_flag = false;
 // if (flag == FLAG_INT)
 // {
@@ -90,18 +108,6 @@ std::string str(av[1]);
 	catch(const std::exception& e) {}
 
 }
-
-int check_num_exit(const std::string& str, int &num)
-{
-	if (str.length() == 1 && (str[0] < '0' || '9' < str[0]))
-	{
-		return FLAG_CHAR;
-	}
-
-	if (str == "inff" || str == "+inff" || str == "inff" || str == "+inff" || \
-	str == "+nanff" ||)
-}
-
 
 // You have to handle these pseudo literals as well (you know, for science): -inff, +inff
 // and nanf.これらの疑似リテラルも扱わなければなりません（ご存知のように、科学のためです）。-inff、+inff
