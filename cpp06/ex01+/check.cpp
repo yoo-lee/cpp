@@ -1,3 +1,9 @@
+#include "convert.hpp"
+
+bool	checkChar(std::string str)
+{
+	return (str.length() == 1 && (str[0] < '0' || '9' < str[0] ));
+}
 
 bool	checkInt(std::string str)
 {
@@ -41,15 +47,15 @@ bool	checkFloat(std::string str)
 	}
 	return (false);
 }
-
+using namespace std;
 t_type getType(std::string str)
 {
-	t_type i;
-
+	// t_type i;
+cout << str<< endl;
 	// if ((i = checkException(str)) != UNKNOWN)
 	// 	return (i);
-	// if (checkChar(str))
-	// 	return CHAR;
+	if (checkChar(str))
+		return CHAR;
 	if (checkInt(str))
 		return INT;
 	if (checkFloat(str))
