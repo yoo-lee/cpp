@@ -2,7 +2,11 @@
 
 bool	checkChar(std::string str)
 {
-	return (str.length() == 1 && (str[0] < '0' || '9' < str[0] ));
+	int c = str[0];
+	if (str.length() == 1 && isalpha(c))
+	return (true);
+	else
+	return (false);
 }
 
 bool	checkInt(std::string str)

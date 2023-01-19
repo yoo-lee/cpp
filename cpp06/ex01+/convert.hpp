@@ -5,6 +5,7 @@
 #include <iostream>
 #include <climits>
 #include <stdlib.h>
+#include <ctype.h>
 
 
 typedef enum		e_type
