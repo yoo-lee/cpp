@@ -51,6 +51,16 @@ bool	checkFloat(std::string str)
 	}
 	return (false);
 }
+
+t_type	checkException(std::string str)
+{
+	if (!str.compare("-inff") || !str.compare("+inff") || !str.compare("nanf"))
+		return (FLOAT);
+	if (!str.compare("-inf") || !str.compare("+inf") || !str.compare("nan"))
+		return (DOUBLE);
+	return (UNKNOWN);
+}
+
 using namespace std;
 t_type getType(std::string str)
 {
@@ -64,7 +74,7 @@ cout << str<< endl;
 		return INT;
 	if (checkFloat(str))
 		return FLOAT;
-	// if (checkDouble(str))
-	// 	return DOUBLE;
+	if (checkDouble(str))
+		return DOUBLE;
 	return UNKNOWN;
 }
