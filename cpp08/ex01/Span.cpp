@@ -1,12 +1,10 @@
-#ifndef SPAN_HPP
-#define SPAN_HPP
-
+#ifndef EASYFIND_H
+#define EASYFIND_H
 #include <algorithm>
 #include <iostream>
 #include <stdexcept>
 #include <vector>
 #include <set>
-#include <string>
 
 class Span
 {
@@ -15,16 +13,34 @@ class Span
 	unsigned int N;
 
 	public:
-	Span();
-	explicit Span (unsigned int N);
-	Span(const Span& span);
-	~Span();
+	Span() : N(0){}
+	explicit Span (unsigned int N) : N(N){} 
+	Span(const Span& span) : multiset(span.getMultiset()), maxSize(span.getMaxSize()) {}
+	~Span(){}
 
-	Span& operator=(const Span& span);
+	Span& operator=(const Span& span)
+	{
+		multiset = span.getMultiset();
+		N = span.getMaxSize();
+		return *this;
+	}
 	
-	const std::multiset<int>& getMultiset() const;
-	unsigned int getMaxSize() const;
-	unsigned int shortestSpan() const;
+	const std::multiset<int>& getMultiset() const
+	{
+		return multiset;
+	}
+
+	unsigned int getMaxSize() const
+	{
+		return maxSize;
+	}
+	unsigned int shortestSpan() const
+	{
+		if (multiset.size() <= 1)
+		{
+			throw std::logic_error ("Not enough number");
+		}
+	}
 	unsigned int longestSpan() const;
 
 	void addNumber(int v);
