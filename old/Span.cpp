@@ -1,36 +1,28 @@
-#ifndef MUTANTSTACK_H
-#define MUTANTSTACK_H
+#ifndef EASYFIND_H
+#define EASYFIND_H
+#include <algorithm>
+#include <iostream>
+#include <vector>
+#include <set>
 
-#include <stack>
-
-
-template <typename T>
-class MutantStack : public std::stack <T>
+class Span
 {
+	private:
+	std::multiset<int> multiset; 
+	unsigned int N;
 	public:
-	typedef typename std::stack<T>::container_type::iterator it;
-	typedef typename std::stack<T>::container_type::const_iterator const_iterator;
-	typedef typename std::stack<T>::container_type::const_reverse_iterator const_reverse_iterator;
-
-	MutantStack() : std::stack<T>() {}
-	MutantStack(const MutantStack<T>& mutant) : std::stack<T>(mutant) {}
-	~MutantStack() {}
-
-	MutantStack<T>& opetator = (const MutantStack<T>& mutant)
-	
-	template <typename InputIterator>
-	void addNumber(InputIterator begin, InputIterator end)
+	Span() : maxSize(0) {}
+	Span (unsigned int N) :maxSize(N){}
+	Span(const Span& span)
 	{
-		std::size_t remain = N - multiset.size();
-		std::size_t dst = std::distance(begin,end);
-
-		if (remain < dst)
-		{
-			throw std::logic_error("cannot store");
-		}
-		multiset.insert(begin, end);
+		span 
 	}
-};
+	~Span();
+
+	Span& operator=(const Span& span);
+	void addNumber(int v);
+	
+}
 
 #endif
 

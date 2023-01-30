@@ -1,65 +1,71 @@
-#ifndef EASYFIND_H
-#define EASYFIND_H
-#include <algorithm>
-#include <iostream>
-#include <stdexcept>
-#include <vector>
+#include "Span.hpp"
+#include <climits>
 #include <set>
 
-class Span
-{
-	private:
-	std::multiset<int> multiset; 
-	unsigned int N;
 
-	public:
-	Span() : N(0){}
-	explicit Span (unsigned int N) : N(N){} 
-	Span(const Span& span) : multiset(span.getMultiset()), maxSize(span.getMaxSize()) {}
-	~Span(){}
+	Span::Span() : N(0){}
+	Span::Span (unsigned int N) : N(N){} 
+	Span::Span(const Span& span)
+	: multiset(span.getMultiset()), N(span.getMaxSize()) {}
+	Span::~Span(){}
 
-	Span& operator=(const Span& span)
+	Span& Span::operator=(const Span& span)
 	{
 		multiset = span.getMultiset();
 		N = span.getMaxSize();
 		return *this;
 	}
 	
-	const std::multiset<int>& getMultiset() const
+	const std::multiset<int>& Span::getMultiset() const
 	{
 		return multiset;
 	}
 
-	unsigned int getMaxSize() const
+	unsigned int Span::getMaxSize() const
 	{
-		return maxSize;
+		return N;
 	}
-	unsigned int shortestSpan() const
+
+	unsigned int Span::shortestSpan() const
 	{
 		if (multiset.size() <= 1)
 		{
 			throw std::logic_error ("Not enough number");
 		}
-	}
-	unsigned int longestSpan() const;
 
-	void addNumber(int v);
-	
-	template <typename InputIterator>
-	void addNumber(InputIterator begin, InputIterator end)
-	{
-		std::size_t remain = N - multiset.size();
-		std::size_t dst = std::distance(begin,end);
-
-		if (remain < dst)
+		std::multiset<int>::iterator beginIt = multiset.begin();
+		unsigned int shotSpan = UINT_MAX;
+		
+		for (std::multiset<int>::iterator i = beginIt; i != multiset.end(); ++i)
 		{
-			throw std::logic_error("cannot store");
+			if (i == multiset.begin())
+				continue;
+			shotSpan = std::min(shotSpan, static_cast<unsigned int>(*i - *beginIt));
+			beginIt = i;
 		}
-		multiset.insert(begin, end);
+    	return shotSpan;
 	}
-};
 
-#endif
+	unsigned int Span::longestSpan() const
+	{
+    if (multiset.size() <= 1)
+    {
+        throw std::logic_error("Not enough numbers stored");
+    }
+	// std::cout << "rbegin = "<<  *multiset.rbegin() << std::endl;  
+	// std::cout << "end = " <<*multiset.end() << std::endl;  
+	// std::cout << "begin = " <<*multiset.begin() << std::endl;  
+    return *multiset.rbegin() - *multiset.begin();
+	}
+	
+	void Span::addNumber(int v)
+	{
+    	if (multiset.size() == getMaxSize())
+    	{
+        	throw std::logic_error("Can't store any more");
+    	}
+    	multiset.insert(v);
+	}
 
 // Develop a Span class that can store a maximum of N integers.
 //  N is an unsigned int
@@ -68,6 +74,7 @@ class Span
 
 //  to add a single number
 // to the Span. It will be used in order to fill it.
+
 //  Any attempt to add a new element if there
 // are already N elements stored should throw an exception.
 // Next, implement two member functions: shortestSpan() and longestSpan()
