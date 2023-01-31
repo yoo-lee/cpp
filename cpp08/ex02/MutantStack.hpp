@@ -1,52 +1,50 @@
 #ifndef MUTANTSTACK_H
 #define MUTANTSTACK_H
 
+#include <algorithm>
+#include <iostream>
+#include <string>
 #include <stack>
-
 
 template <typename T>
 class MutantStack : public std::stack <T>
 {
 	public:
-	typedef typename std::stack<T>::container_type::iterator it;
+	typedef typename std::stack<T>::container_type::iterator iterator;
 	typedef typename std::stack<T>::container_type::const_iterator const_iterator;
+	typedef typename std::stack<T>::container_type::reverse_iterator reverse_iterator;
 	typedef typename std::stack<T>::container_type::const_reverse_iterator const_reverse_iterator;
 
 	MutantStack() : std::stack<T>() {}
 	MutantStack(const MutantStack<T>& mutant) : std::stack<T>(mutant) {}
 	~MutantStack() {}
 
-	MutantStack<T>& opetator = (const MutantStack<T> mutant)
-	
-	template <typename InputIterator>
-	void addNumber(InputIterator begin, InputIterator end)
+	MutantStack<T>& operator =(const MutantStack<T>& mutant)
 	{
-		std::size_t remain = N - multiset.size();
-		std::size_t dst = std::distance(begin,end);
-
-		if (remain < dst)
-		{
-			throw std::logic_error("cannot store");
-		}
-		multiset.insert(begin, end);
+		this->c = mutant.c;
+		return *this;
 	}
+
+	iterator begin() {return this->c.begin();}
+    const_iterator begin() const {return this->c.begin();}
+    reverse_iterator rbegin() {return this->c.rbegin();}
+    const_reverse_iterator rbegin() const {return this->c.rbegin();}
+    iterator end() {return this->c.end();}
+    const_iterator end() const {return this->c.end();}
+    reverse_iterator rend() {return this->c.rend();}
+    const_reverse_iterator rend() const {return this->c.rend();}
 };
 
 #endif
 
-// Develop a Span class that can store a maximum of N integers.
-//  N is an unsigned int
-// variable and will be the only parameter passed to the constructor.
-// This class will have a member function called addNumber()
-
-//  to add a single number
-// to the Span. It will be used in order to fill it.
-//  Any attempt to add a new element if there
-// are already N elements stored should throw an exception.
-// Next, implement two member functions: shortestSpan() and longestSpan()
-// They will respectively find out the shortest span or the longest span (or distance, if
-// you prefer) between all the numbers stored, and return it. If there are no numbers stored,
-// or only one, no span can be found. Thus, throw an exception.
-// Of course, you will write your own tests and they will be way more thorough than the
-// ones below. Test your Span at least with a minimum of 10 000 numbers. More would be
-// even better.
+// Now, time to move on more serious things. Let’s develop something weird.
+// The std::stack container is very nice. Unfortunately, it is one of the only
+//  STL Containers that is NOT iterable. That’s too bad.
+// But why would we accept this? Especially 
+// if we can take the liberty of butchering the
+// original stack to create missing features.
+// To repair this injustice, you have to make the std::stack container iterable.
+// Write a MutantStack class. It will be implemented in terms of a std::stack.
+// It will offer all its member functions, plus an additional feature: iterators.
+// Of course, you will write and turn in your own tests to ensure everything works as
+// expected.

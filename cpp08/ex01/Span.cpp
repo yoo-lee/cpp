@@ -5,48 +5,78 @@
 #include <stdexcept>
 #include <vector>
 #include <set>
+#include "Span.hpp"
 
-class Span
-{
-	private:
+
 	std::multiset<int> multiset; 
 	unsigned int N;
 
-	public:
-	Span() : N(0){}
-	explicit Span (unsigned int N) : N(N){} 
-	Span(const Span& span) : multiset(span.getMultiset()), maxSize(span.getMaxSize()) {}
-	~Span(){}
+	Span::Span() : N(0){}
+	Span::Span(unsigned int n) : N(n){} 
+	Span::Span(const Span& span)
+	{
+		multiset = span.getMultiset();
+		N = span.getMaxSize();
+	}
+	Span::~Span(){}
 
-	Span& operator=(const Span& span)
+	Span& Span::operator=(const Span& span)
 	{
 		multiset = span.getMultiset();
 		N = span.getMaxSize();
 		return *this;
 	}
 	
-	const std::multiset<int>& getMultiset() const
+	const std::multiset<int>& Span::getMultiset() const
 	{
 		return multiset;
 	}
 
-	unsigned int getMaxSize() const
+	unsigned int Span::getMaxSize() const
 	{
-		return maxSize;
+		return N;
 	}
-	unsigned int shortestSpan() const
+
+	unsigned int Span::shortestSpan() const
 	{
-		if (multiset.size() <= 1)
+		if (this->multiset.size() <= 1)
 		{
 			throw std::logic_error ("Not enough number");
 		}
+		
+		std::multiset<int>::iterator first_it = multiset.begin(); 
+		unsigned int shortspan;
+		std::multiset<int>::iterator itr; 
+		for (itr = multiset.begin(); itr != multiset.end(); ++itr)
+		{
+			if (itr == first_it)
+				continue;
+			shortspan = std::min(shortspan, static_cast<unsigned int>(*itr - *first_it));
+			first_it = itr;
+		}
+		return shortspan;
 	}
-	unsigned int longestSpan() const;
 
-	void addNumber(int v);
+	unsigned int Span::longestSpan() const
+	{
+		if (this -> multiset.size() <= 1)
+		{
+			throw std::logic_error ("Not enough numbers");
+		}
+		return *multiset.rbegin() - *multiset.begin();
+	}
+
+	void Span::addNumber(int v)
+	{
+		if (multiset.size() == N)
+		{
+			throw  std::logic_error("Too much numbers");
+		}
+		multiset.insert(v);
+	}
 	
-	template <typename InputIterator>
-	void addNumber(InputIterator begin, InputIterator end)
+	template <typename InputItr>
+	void Span::addNumber(InputItr begin, InputItr end)
 	{
 		std::size_t remain = N - multiset.size();
 		std::size_t dst = std::distance(begin,end);
@@ -57,7 +87,6 @@ class Span
 		}
 		multiset.insert(begin, end);
 	}
-};
 
 #endif
 
