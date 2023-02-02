@@ -3,10 +3,13 @@
 
 int main ()
 {
- std::multiset<int> st{ 4, 1, 4} ;
+	std::multiset<int> st{ 4, 1, 4} ;
     std::multiset<int>::iterator it = st.begin();
 	std::multiset<int>::iterator a = st.end(); 
 	// auto it = st.end();
+	
+	
+	
 	std::cout << *it << std::endl;
 	std::cout << *a << std::endl;
 	for (auto i = st.begin(); i != st.end(); ++i)

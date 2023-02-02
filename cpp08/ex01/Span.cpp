@@ -4,7 +4,6 @@
 #include "Span.hpp"
 
 
-<<<<<<< HEAD
 	std::multiset<int> multiset; 
 	unsigned int N;
 
@@ -15,13 +14,6 @@
 		multiset = span.getMultiset();
 		N = span.getMaxSize();
 	}
-=======
-
-	Span::Span() : N(0){}
-	Span::Span (unsigned int N) : N(N){} 
-	Span::Span(const Span& span)
-	: multiset(span.getMultiset()), N(span.getMaxSize()) {}
->>>>>>> 51f105ebb568aa120a6d509074d0b8d1fc120c5c
 	Span::~Span(){}
 
 	Span& Span::operator=(const Span& span)
@@ -47,7 +39,6 @@
 		{
 			throw std::logic_error ("Not enough number");
 		}
-<<<<<<< HEAD
 		
 		std::multiset<int>::iterator first_it = multiset.begin(); 
 		unsigned int shortspan;
@@ -85,8 +76,6 @@
 	{
 		std::size_t remain = N - multiset.size();
 		std::size_t dst = std::distance(begin,end);
-=======
->>>>>>> 51f105ebb568aa120a6d509074d0b8d1fc120c5c
 
 		std::multiset<int>::iterator beginIt = multiset.begin();
 		unsigned int shotSpan = UINT_MAX;

@@ -69,6 +69,8 @@ int main ()
 }
 // A first easy exercise is the way to start off on the right foot.
 // Write a function template easyfind that accepts a type T.
+// template easyfind<
+
 //  It takes two parameters.
 // The first one has type T and the second one is an integer.
 
