@@ -41,7 +41,7 @@ void checkInput(char *file, std::map<std::string, double> data) {
         std::string value;
         char seperator;
 // issストリームから日付、区切り記号、値が正常に抽出されたかどうかを確認しています。この部分の意味は次の通りです：
-
+// >>はつながっていてもよい
 // iss >> date：issストリームから日付を抽出し、date変数に格納します。
 // iss >> seperator：issストリームから区切り記号を抽出し、seperator変数に格納します。
 // iss >> value：issストリームから値を抽出し、value変数に格納します。
@@ -141,25 +141,47 @@ std::string moveDateBackOneDay(const std::string& date) {
     return (prev_date);
 }
 
+
+// すべてのチェックがパスした場合、関数は true を返し、入力文字列が有効な日付を表していることを示します。
 bool ifValidDate(const std::string& date) {
+// 関数はまず、入力文字列の長さをチェックします。
+// もし長さが正確に10文字でない場合、無効な日付としてすぐに false を返します。
+// "YYYY-MM-DD" が１０文字である為
     // Check that the input string has the correct length
     if (date.length() != 10) {
         return false;
     }
     // Check that the Year, Month, and Day components are valid integers
+	// 次に、year、month、day、separator1、separator2 という変数を宣言します。
+	// これらの変数は、日付の抽出されたコンポーネントを格納するために使用されます。
+
+	// std::istringstream オブジェクト ss を作成し、入力文字列 date で初期化します。
+	// 入力ストリーム抽出演算子 (>>) を使用して、ss から値を抽出し、対応する変数に格納します。
+	// 期待される形式は year-separator1-month-separator2-day です。
+	// 例えば、"2023-05-09" は year = 2023、separator1 = '-'、month = 05、separator2 = '-'、day = 09 
+	// として解析されます。
+	// 抽出後、日付のコンポーネントを検証するためにいくつかのチェックを行います：
+	// 抽出が失敗したかどうか (ss.fail()) やセパレータが '-' でないかをチェックします。
     int year, month, day;
     char separator1, separator2;
     std::istringstream ss(date);
     ss >> year >> separator1 >> month >> separator2 >> day;
     if (ss.fail() || separator1 != '-' || separator2 != '-' ||
+// 年が負の値であるか、月が1から12の範囲外であるか、日が1から31の範囲外であるかをチェックします。
         year < 0 || month < 1 || month > 12 || day < 1 || day > 31) {
+// これらのいずれかの条件が満たされた場合、false を返します。
         return false;
     }
+
+	// 抽出されたコンポーネントに基づいて、月と日の値に特定の条件を追加でチェックします。
+	// 例えば、2月の場合にはうるう年であるかどうかを確認し、日数を適切に検証します。
+	// また、4月、6月、9月、11月の場合には、日が30より大きいかどうかをチェックします。
     // Check that the Month and Day components are valid for the given Year
     bool leap_year = ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
     if ((month == 2 && (leap_year ? day > 29 : day > 28)) ||
         ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30)) {
 		std::cout << "idil" << std::endl;
+	// これらのいずれかの条件が満たされた場合、false を返します。
         return false;
     }
     // The input string is a valid date in the Year-Month-Day format
