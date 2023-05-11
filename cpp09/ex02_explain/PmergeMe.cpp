@@ -1,13 +1,33 @@
 #include "PmergeMe.hpp"
 
+// プログラムの引数が2つ未満の場合、エラーメッセージを表示してプログラムを終了します。
+// std::vector<int>型のベクトル vec と std::list<int>型のリスト lst を作成します。
+// プログラムの引数をパースして、正の整数のみを vec と lst に追加します。パース中にエラーが発生した場合は、エラーメッセージを表示してプログラムを終了します。
+
+// ソート前のベクトル vec とリスト lst を表示します。
+// ベクトル vec の要素数を取得し、変数 nVec に格納します。
+// リスト lst の要素数を取得し、変数 nLst に格納します。
+
+// ベクトル vec をマージソートでソートし、実行時間を計測します。
+// リスト lst をマージソートでソートし、実行時間を計測します。
+
+// ソート後のベクトル vec を表示します。
+// ソート後のリスト lst を表示します。
+// ベクトルソートの実行時間を表示します。
+// リストソートの実行時間を表示します。
+// 最終的に、ベクトルとリストそれぞれでソートが行われ、ソート前とソート後のシーケンスが表示され、それぞれのソートの実行時間が表示されます。
+
+
 int main(int argc, char* argv[]) {
     if (argc < 2) {
         std::cerr << "Error: No input sequence provided." << std::endl;
         return 1;
     }
 
+// std::vector<int>型のベクトル vec と std::list<int>型のリスト lst を作成します。
     std::vector<int> vec;
     std::list<int> lst;
+
 
     // Parse input sequence and store in containers
     for (int i = 1; i < argc; i++) {
@@ -84,3 +104,5 @@ int main(int argc, char* argv[]) {
 
     return 0;
 }
+
+
