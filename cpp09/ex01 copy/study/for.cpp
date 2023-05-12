@@ -6,7 +6,7 @@ int main() {
   std::string expression = "Hello";
 
   for (char c : expression) {
-    std::cout << c << "+";
+    std::cout << c << "+" << '-';
   }
 
   return 0;

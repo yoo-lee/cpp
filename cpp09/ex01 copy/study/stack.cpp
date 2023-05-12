@@ -14,7 +14,7 @@ int main() {
     // スタックのトップ要素の取得と削除
     int topElement = stack.top();
     stack.pop();
-// stack.pop();を呼び出すと、スタックのトップにある要素が削除されます。
+	// stack.pop();を呼び出すと、スタックのトップにある要素が削除されます。
 	// int backE = stack.back();
 	// stack.pop();
 
@@ -24,6 +24,15 @@ int main() {
     // スタックが空かどうかのチェック
     bool isEmpty = stack.empty();
 
+	bool isEmpty = stack.empty();
+	int stack.size();
+
+	// std::cout << "stack contents ";
+	// while (!stack.empty())
+	// {
+	// 	std::cout << stack.top() << " ";
+	// 	stack.pop();
+	// }
     // スタックの中身を表示
     std::cout << "Stack contents: ";
     while (!stack.empty()) {
