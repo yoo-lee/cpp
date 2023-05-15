@@ -141,7 +141,6 @@ std::string moveDateBackOneDay(const std::string& date) {
     return (prev_date);
 }
 
-
 // すべてのチェックがパスした場合、関数は true を返し、入力文字列が有効な日付を表していることを示します。
 bool ifValidDate(const std::string& date) {
 // 関数はまず、入力文字列の長さをチェックします。

@@ -17,7 +17,6 @@
 // リストソートの実行時間を表示します。
 // 最終的に、ベクトルとリストそれぞれでソートが行われ、ソート前とソート後のシーケンスが表示され、それぞれのソートの実行時間が表示されます。
 
-
 int main(int argc, char* argv[]) {
     if (argc < 2) {
         std::cerr << "Error: No input sequence provided." << std::endl;
@@ -27,7 +26,6 @@ int main(int argc, char* argv[]) {
 // std::vector<int>型のベクトル vec と std::list<int>型のリスト lst を作成します。
     std::vector<int> vec;
     std::list<int> lst;
-
 
     // Parse input sequence and store in containers
     for (int i = 1; i < argc; i++) {
