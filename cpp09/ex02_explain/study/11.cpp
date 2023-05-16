@@ -4,7 +4,7 @@ list f(list )
 void mergeList(std::list<int>& A, int p, int q, int r) 
 {
 	for (int i = 0; i < n1; i++;)
-		LA.push_back(*std::next(A.begin(),p+i ))
+		LA.push_back(*std::next(A.begin(),p+i))
 }
 
 int main ()

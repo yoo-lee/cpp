@@ -87,15 +87,14 @@ double findRate(std::string date, std::map<std::string, double> data)
 }
 
 std::string moveDateBackOneDay(const std::string& date) {
-    // Extract the year, month, and day from the input date
     int year, month, day;
     sscanf(date.c_str(), "%d-%d-%d", &year, &month, &day);
-    // Compute the date one day earlier
+
     int prev_day = day - 1;
     int prev_month = month;
     int prev_year = year;
+
     if (prev_day == 0) {
-        // If we've gone back to the previous month, set the day to the last day of the previous month
         prev_month = month - 1;
         if (prev_month == 0) {
             prev_month = 12;
@@ -104,42 +103,32 @@ std::string moveDateBackOneDay(const std::string& date) {
                 return "not valid date";
             }
         }
-// このコードは、与えられた日付の前日を計算し、文字列としてフォーマットして返す関数です。以下にその詳細を説明します。
-        switch (prev_month) {
-            case 2:
-                // Handle leap years for February
-                if (prev_year % 4 == 0 && (prev_year % 100 != 0 || prev_year % 400 == 0))
-				{
-                    prev_day = 29;
-                } else {
-                    prev_day = 28;
-                }
-                break;
-			// ３０日の日付の計算
-            case 4:
-            case 6:
-            case 9:
-            case 11:
-                prev_day = 30;
-                break;
-            default:
-                prev_day = 31;
+
+        if (prev_month == 2) {
+            bool leap_year = ((prev_year % 4 == 0) && (prev_year % 100 != 0)) || (prev_year % 400 == 0);
+            prev_day = leap_year ? 29 : 28;
+			// もしleap_yearが真（true）であれば、prev_dayに29を代入します。
+			// もしleap_yearが偽（false）であれば、prev_dayに28を代入します。
+        } else if (prev_month == 4 || prev_month == 6 || prev_month == 9 || prev_month == 11) {
+            prev_day = 30;
+        } else {
+            prev_day = 31;
         }
     }
-    // Format the previous date as a string and return it
-	// この部分では、prev_month（前の月）の値に応じて前日の日付を計算しています。
-	// 具体的には、2月の場合はうるう年を考慮し、4月、6月、9月、11月の場合は30日、それ以外の月は31日としています。
+
     std::string prev_date = std::to_string(prev_year) + "-";
     if (prev_month < 10)
-		prev_date += "0" + std::to_string(prev_month);
+        prev_date += "0" + std::to_string(prev_month);
     else
         prev_date += std::to_string(prev_month);
     if (prev_day < 10)
         prev_date += "-0" + std::to_string(prev_day);
     else
         prev_date += "-" + std::to_string(prev_day);
-    return (prev_date);
+
+    return prev_date;
 }
+
 
 // すべてのチェックがパスした場合、関数は true を返し、入力文字列が有効な日付を表していることを示します。
 bool ifValidDate(const std::string& date) {
