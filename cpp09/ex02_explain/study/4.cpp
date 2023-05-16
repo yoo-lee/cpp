@@ -1,24 +1,13 @@
+#include <iostream>
+#include <list>
 
-void merge(vector<int> &arr , int left, int mid, int right)
+int main()
 {
-	int n1 = mid - left +1;
-	int n2 = right - mid;
+    std::list<int> a = {1, 2, 3};
+    std::list<int> LA;
+    LA.push_back(*std::next(a.begin(), 1));  // 正しい範囲内のイテレータを使用して要素を取得
 
-	std::vector<int> leftArr(n1);
-	std::vector<int> rightArr(n2);
-}
-
-for (int i = 0; i < n1; i++;)
-	leftArr[i] = &arr
-
-int main() {
-    std::vector<int> arr = {1, 2, 3};
-	std::vector<int> arr2 = {3, 4 ,5};
-
-    mergeSort(arr);
-
-    // ソートされた結果を出力
-    for (int num : arr) {
+    for (int num : LA) {
         std::cout << num << " ";
     }
     std::cout << std::endl;

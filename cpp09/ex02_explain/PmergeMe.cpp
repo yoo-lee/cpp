@@ -4,10 +4,6 @@
 // std::vector<int>型のベクトル vec と std::list<int>型のリスト lst を作成します。
 // プログラムの引数をパースして、正の整数のみを vec と lst に追加します。パース中にエラーが発生した場合は、エラーメッセージを表示してプログラムを終了します。
 
-// ソート前のベクトル vec とリスト lst を表示します。
-// ベクトル vec の要素数を取得し、変数 nVec に格納します。
-// リスト lst の要素数を取得し、変数 nLst に格納します。
-
 // ベクトル vec をマージソートでソートし、実行時間を計測します。
 // リスト lst をマージソートでソートし、実行時間を計測します。
 
@@ -24,6 +20,10 @@ int main(int argc, char* argv[]) {
     }
 
 // std::vector<int>型のベクトル vec と std::list<int>型のリスト lst を作成します。
+// ソート前のベクトル vec とリスト lst を表示します。
+// ベクトル vec の要素数を取得し、変数 nVec に格納します。
+// リスト lst の要素数を取得し、変数 nLst に格納します。
+
     std::vector<int> vec;
     std::list<int> lst;
 
@@ -50,6 +50,7 @@ int main(int argc, char* argv[]) {
     }
 
     // Display unsorted sequence
+	// 上記のコードは、ソート前のベクター（vec）の要素を表示するためのコードです。
     std::cout << "<vec>Before: ";
     for (std::vector<int>::const_iterator it = vec.begin(); it != vec.end(); ++it) {
         std::cout << *it << " ";

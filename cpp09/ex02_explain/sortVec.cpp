@@ -1,80 +1,85 @@
-#include "PmergeMe.hpp"
+#include <iostream>
+#include <vector>
 
-// const int K = 5;
+void merge(std::vector<int>& arr, int left, int mid, int right) {
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
 
-void insertionSortVec(std::vector<int>& A, int p, int q) {
-    for (int i = p; i < q; i++) {
-        int tempVal = A[i + 1];
-        int j = i + 1;
-        while (j > p && A[j - 1] > tempVal) {
-            A[j] = A[j - 1];
-            j--;
-        }
-        A[j] = tempVal;
-    }
-    // for (int i = p; i <= q; i++) {
-    //     std::cout << A[i] << " ";
-    // }
-    // std::cout << std::endl;
-}
+    std::vector<int> leftArr(n1);
+    std::vector<int> rightArr(n2);
 
-void mergeVec(std::vector<int>& A, int p, int q, int r) {
-    int n1 = q - p + 1;
-    int n2 = r - q;
-    std::vector<int> LA(n1), RA(n2);
-    for (int i = 0; i < n1; i++) {
-        LA[i] = A[p + i];
-    }
-    for (int i = 0; i < n2; i++) {
-        RA[i] = A[q + 1 + i];
-    }
-    int RIDX = 0;
-    int LIDX = 0;
-    for (int i = p; i <= r; i++) {
-        if (RIDX == n2) {
-            A[i] = LA[LIDX];
-            LIDX++;
-        } else if (LIDX == n1) {
-            A[i] = RA[RIDX];
-            RIDX++;
-        } else if (RA[RIDX] > LA[LIDX]) {
-            A[i] = LA[LIDX];
-            LIDX++;
+    for (int i = 0; i < n1; ++i){
+		using namespace std;
+        leftArr[i] = arr[left + i];
+		// cout << "i ="<<i << " " << "leftArr[i]  ="<<leftArr[i] <<  endl;
+	}
+    for (int j = 0; j < n2; ++j)
+        rightArr[j] = arr[mid + 1 + j];
+
+    int i = 0;
+    int j = 0;
+    int k = left;
+
+    while (i < n1 && j < n2) 
+	{
+			// cout << "j1 ="<< j << " " << "rightArr[j] ="<< rightArr[j] <<  endl;
+        if (leftArr[i] <= rightArr[j]) {
+            arr[k] = leftArr[i];
+            ++i;
         } else {
-            A[i] = RA[RIDX];
-            RIDX++;
+            arr[k] = rightArr[j];
+            ++j;
         }
+        ++k;
+		// cout << "k ="<< k << " " << "arr[k] =" << arr[k] <<  endl;
+		// cout << "i ="<<i << " " << "leftArr[i]  ="<<leftArr[i] <<  endl;
+		// cout << "j2 ="<< j << " " << "rightArr[j] ="<<rightArr[j] <<  endl;
+		
+	}
+
+    while (i < n1) {
+        arr[k] = leftArr[i];
+        ++i;
+        ++k;
+    }
+
+    while (j < n2) {
+        arr[k] = rightArr[j];
+        ++j;
+        ++k;
     }
 }
 
-void mergeInsertVec(std::vector<int>& A, int p, int r) {
-    if (r - p > K) {
-        int q = (p + r) / 2;
-        mergeInsertVec(A, p, q);
-        mergeInsertVec(A, q + 1, r);
-        mergeVec(A, p, q, r);
-    } else {
-        insertionSortVec(A, p, r);
+void mergeSort(std::vector<int>& arr, int left, int right) {
+    if (left < right) {
+        int mid = left + (right - left) / 2;
+		using namespace std;
+		cout << "left ="<< left << " " << "mid  ="<< mid <<  endl;
+		for(int i = 0; i < 6; i++)
+		cout  << " " << "arr  ="<< arr[i] <<  endl;
+        mergeSort(arr, left, mid);
+        mergeSort(arr, mid + 1, right);
+
+        merge(arr, left, mid, right);
     }
 }
 
-// int main() {
-//     std::vector<int> A;
-//     A.push_back(5);
-//     A.push_back(3);
-//     A.push_back(9);
-//     A.push_back(2);
-//     A.push_back(8);
-//     A.push_back(7);
-//     A.push_back(1);
-//     A.push_back(4);
-//     A.push_back(6);
-//     int n = A.size();
-//     mergeInsertVec(A, 0, n - 1);
-//     for (int i = 0; i < n; i++) {
-//         std::cout << A[i] << " ";
-//     }
-//     std::cout << std::endl;
-//     return 0;
-// }
+int main() {
+    // std::vector<int> v = {5, 4, 3, 2, 1};
 
+    std::cout << "Before sorting: ";
+    for (int num : v) {
+        std::cout << num << " ";
+    }
+    std::cout << std::endl;
+
+    mergeSort(v, 0, v.size() - 1);
+
+    std::cout << "After sorting: ";
+    for (int num : v) {
+        std::cout << num << " ";
+    }
+    std::cout << std::endl;
+
+    return 0;
+}

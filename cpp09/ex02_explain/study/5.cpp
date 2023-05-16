@@ -1,13 +1,22 @@
 #include <iostream>
 #include <vector>
 
-int main ()
-{
-	// int a[] = {1, 2, 3};
-	std::vec <int> a= {1, 2, 3};
-		a.push_back(4);
-	for( int i :a){
-	std::cout << i << " ";
+void mergeSort(std::vector<int>& arr, int left, int right) {
+    if (left < right) {
+        int mid = left + (right - left) / 2;
+		using namespace std;
+		cout << "left ="<< left << " " << "mid  ="<< mid <<  endl;
+		for(int i = 0; i < 6; i++)
+		cout  << " " << "arr  ="<< arr[i] <<  endl;
+        mergeSort(arr, left, mid);
+        // mergeSort(arr, mid + 1, right);
+
+    }
 }
-return 0;
+
+	
+int main() {
+    std::vector<int> v = {5, 4, 3, 2, 1};
+
+    mergeSort(v, 0, v.size() - 1);
 }
