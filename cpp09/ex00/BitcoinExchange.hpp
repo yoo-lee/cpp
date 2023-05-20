@@ -2,20 +2,52 @@
 # define BITCOINEXCHANGE_HPP
 
 #include <iostream>
+#include <string>
 #include <fstream>
 #include <sstream>
-#include <string>
-#include <exception>
 #include <map>
+#include <time.h>
+#include <stdlib.h>
 
-#define MAX	2147483647
+class BitcoinExchange {
+	public:
+		// Costructor
+		BitcoinExchange(){};
+		BitcoinExchange(std::string csvfile);
+		BitcoinExchange (const BitcoinExchange &src); // Copy costructor
+		~BitcoinExchange(){};
+		BitcoinExchange &operator=(const BitcoinExchange &src); // Overload operator
+		// Member function
+		void									readfileinput(std::string inputfile);
+		void									exec_input();						
+		
+	private:
+		std::map<std::string, float> 			csvMap;
+		std::multimap<std::string, float> 		inputMap;
+};
 
-double findRate(std::string date, std::map<std::string, double> data);
-void checkInput(char *file, std::map<std::string, double> data);
-std::map<std::string, double> readData();
-void printMap(const std::map<std::string, double>& myMap);
-std::string moveDateBackOneDay(const std::string& date);
-bool ifValidDate(const std::string& date);
-bool ifValidValue(const std::string& value);
+
+class Exception : public std::exception {
+	public:
+		class ErrorFile {
+			public:
+				std::string 				_str;
+
+				ErrorFile(const std::string temp) : _str("Error: " + temp){};
+				const char* what() const throw() {
+					return _str.c_str();
+				}
+		};
+		class ErrorData {
+			public:
+				std::string 				_str;
+
+				ErrorData(const std::string temp) : _str("Error: " + temp){};
+				const char* what() const throw() {
+					return _str.c_str();
+				}
+		};
+};
+
 
 #endif

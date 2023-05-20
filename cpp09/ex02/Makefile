@@ -1,17 +1,19 @@
-CXX = g++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++11 -O3
-TARGET = pmergeme
-SRCS = main.cpp PmergeMe.cpp
-OBJS = $(SRCS:.cpp=.o)
-
-$(TARGET): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS)
-
-main.o: main.cpp PmergeMe.hpp
-	$(CXX) $(CXXFLAGS) -c main.cpp
-
-PmergeMe.o: PmergeMe.cpp PmergeMe.hpp
-	$(CXX) $(CXXFLAGS) -c PmergeMe.cpp
-
-clean:
-	rm -f $(OBJS) $(TARGET)
+NAME			= PmergeMe
+CPP				= c++
+FLAGS			= -Wall -Wextra -Werror -I -std=c++98
+SRC				= sortVec.cpp sortList.cpp PmergeMe.cpp main.cpp
+INC				= PmergeMe.hpp
+OBJ_DIR			= obj
+OBJ				= $(addprefix $(OBJ_DIR)/, $(SRC:%.cpp=%.o))
+all : $(NAME)
+$(OBJ_DIR)/%.o : %.cpp $(INC)
+	@mkdir -p $(dir $@)
+	$(CPP) $(FLAGS) -c $< -o $@
+$(NAME) : $(OBJ)
+	$(CPP) $(FLAGS) $^ -o $@
+clean : 
+	rm -rf $(OBJ_DIR)
+fclean : clean
+	rm -rf $(NAME)
+re : fclean all
+.PHONY : clean, fclean, all, re
