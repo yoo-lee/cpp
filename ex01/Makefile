@@ -1,4 +1,4 @@
-CXX=g++
+CXX=c++
 
 CXXFFLAGS = -Wall -Werror -Wextra -std=c++98
 
