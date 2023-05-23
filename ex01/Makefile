@@ -1,5 +1,6 @@
 CXX=g++
-CXXFLAGS=-std=c++11 -Wall -Wextra -pedantic
+
+CXXFFLAGS = -Wall -Werror -Wextra -std=c++98
 
 all: RPN
 
