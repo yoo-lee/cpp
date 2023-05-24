@@ -1,10 +1,18 @@
 #include "BitcoinExchange.hpp"
+#include "Exception.hpp"
+
 
 BitcoinExchange::BitcoinExchange(std::string filecsv) 
 {
     std::ifstream file(filecsv.c_str());
 	if (!file)
 		throw Exception::ErrorFile("Unable to open file!");
+	file.seekg(0, std::ios::end);
+	std::streampos fileSize = file.tellg();
+	file.seekg(0, std::ios::beg);
+	if (fileSize <= 0)
+		throw Exception::ErrorFile("csv file is empty!");
+
 	std::string line;
 	while(std::getline(file, line)) 
 	{
@@ -23,6 +31,11 @@ void BitcoinExchange::readfileinput(std::string inputfile)
 	std::ifstream file(inputfile.c_str());
 	if (!file)
 		throw Exception::ErrorData("Unable to open file!");
+	file.seekg(0, std::ios::end);
+	std::streampos fileSize = file.tellg();
+	file.seekg(0, std::ios::beg);
+	if (fileSize <= 0)
+		throw Exception::ErrorFile("input file is empty!");
 	std::string line;
 	struct tm tm;
 	while (std::getline(file, line)) {
@@ -40,11 +53,11 @@ void BitcoinExchange::readfileinput(std::string inputfile)
 		std::getline(ss, value);
 		if (atof(value.c_str()) < 0) 
 		{
-			std::cout << "Error: not a positive number" << std::endl;
+			std::cout << "Error: not a positive number =>" << value << std::endl;
 			continue;
 		}
 		else if (atof(value.c_str()) > 1000) {
-			std::cout << "Error: too large number." << std::endl;
+			std::cout << "Error: too large number. =>" << value << std::endl;
 			continue;
 		}
 		//inputmapyに格納
@@ -86,3 +99,13 @@ void BitcoinExchange::exec_input() {
 		}
 	}
 }
+
+
+
+
+
+
+
+
+
+

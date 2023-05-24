@@ -3,6 +3,7 @@ NAME = btc
 FLAGS = -Wall -Werror -Wextra -std=c++98
 
 SRC =	BitcoinExchange.cpp \
+		Exception.cpp \
 		main.cpp 
 
 CC = c++
@@ -17,13 +18,11 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CC) $^ -o $@
 
-
 clean:
 	rm -rf $(OBJ)
 
 fclean: clean
 	rm -rf $(NAME)
-	
 
 re: fclean all
 

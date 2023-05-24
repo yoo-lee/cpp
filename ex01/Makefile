@@ -1,6 +1,6 @@
 CXX=c++
 
-CXXFFLAGS = -Wall -Werror -Wextra -std=c++98
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
 all: RPN
 
@@ -19,7 +19,6 @@ clean:
 fclean: clean
 	rm -rf $(NAME)
 	
-
 re: fclean all
 
 .PHONY: all clean fclean re
