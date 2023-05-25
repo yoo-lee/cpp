@@ -1,2 +1,2 @@
 # cpp0130
-42 Assigment
+42 school Assignment
