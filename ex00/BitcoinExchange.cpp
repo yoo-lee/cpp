@@ -1,7 +1,6 @@
 #include "BitcoinExchange.hpp"
 #include "Exception.hpp"
 
-
 BitcoinExchange::BitcoinExchange(std::string filecsv) 
 {
     std::ifstream file(filecsv.c_str());
@@ -30,7 +29,7 @@ void BitcoinExchange::readfileinput(std::string inputfile)
 {
 	std::ifstream file(inputfile.c_str());
 	if (!file)
-		throw Exception::ErrorData("Unable to open file!");
+		throw Exception::ErrorFile("Unable to open file!");
 	file.seekg(0, std::ios::end);
 	std::streampos fileSize = file.tellg();
 	file.seekg(0, std::ios::beg);
@@ -77,9 +76,22 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &src) {
 	return (*this);
 }
 
+void Bitcoin_debug()
+{
+	std::map<std::string, float>::iterator it_input;
+	std::map<std::string, float>::iterator it_csv;
+
+	std::cout << "it_input-> first" << it_input-> first << std::endl;
+	std::cout << "it_input-> second" <<  it_input-> second << std::endl;
+
+	std::cout << "it_csv-> first" <<  it_csv-> first << std::endl;
+	std::cout << "it_csv-> second" <<  it_csv-> second << std::endl;
+}
+
 void BitcoinExchange::exec_input() {
 	std::map<std::string, float>::iterator it_csv;
 	std::multimap<std::string, float>::iterator it_input;
+
 	for (it_input = this->inputMap.begin(); it_input != this->inputMap.end(); it_input++) 
 	{
 		for (it_csv = this->csvMap.begin(); it_csv != this->csvMap.end(); it_csv++) 
