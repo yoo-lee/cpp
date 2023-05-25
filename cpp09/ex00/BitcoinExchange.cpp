@@ -1,10 +1,17 @@
 #include "BitcoinExchange.hpp"
+#include "Exception.hpp"
 
 BitcoinExchange::BitcoinExchange(std::string filecsv) 
 {
     std::ifstream file(filecsv.c_str());
 	if (!file)
 		throw Exception::ErrorFile("Unable to open file!");
+	file.seekg(0, std::ios::end);
+	std::streampos fileSize = file.tellg();
+	file.seekg(0, std::ios::beg);
+	if (fileSize <= 0)
+		throw Exception::ErrorFile("csv file is empty!");
+
 	std::string line;
 	while(std::getline(file, line)) 
 	{
@@ -22,7 +29,12 @@ void BitcoinExchange::readfileinput(std::string inputfile)
 {
 	std::ifstream file(inputfile.c_str());
 	if (!file)
-		throw Exception::ErrorData("Unable to open file!");
+		throw Exception::ErrorFile("Unable to open file!");
+	file.seekg(0, std::ios::end);
+	std::streampos fileSize = file.tellg();
+	file.seekg(0, std::ios::beg);
+	if (fileSize <= 0)
+		throw Exception::ErrorFile("input file is empty!");
 	std::string line;
 	struct tm tm;
 	while (std::getline(file, line)) {
@@ -40,11 +52,11 @@ void BitcoinExchange::readfileinput(std::string inputfile)
 		std::getline(ss, value);
 		if (atof(value.c_str()) < 0) 
 		{
-			std::cout << "Error: not a positive number" << std::endl;
+			std::cout << "Error: not a positive number =>" << value << std::endl;
 			continue;
 		}
 		else if (atof(value.c_str()) > 1000) {
-			std::cout << "Error: too large number." << std::endl;
+			std::cout << "Error: too large number. =>" << value << std::endl;
 			continue;
 		}
 		//inputmapyに格納
@@ -64,9 +76,22 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &src) {
 	return (*this);
 }
 
+void Bitcoin_debug()
+{
+	std::map<std::string, float>::iterator it_input;
+	std::map<std::string, float>::iterator it_csv;
+
+	std::cout << "it_input-> first" << it_input-> first << std::endl;
+	std::cout << "it_input-> second" <<  it_input-> second << std::endl;
+
+	std::cout << "it_csv-> first" <<  it_csv-> first << std::endl;
+	std::cout << "it_csv-> second" <<  it_csv-> second << std::endl;
+}
+
 void BitcoinExchange::exec_input() {
 	std::map<std::string, float>::iterator it_csv;
 	std::multimap<std::string, float>::iterator it_input;
+
 	for (it_input = this->inputMap.begin(); it_input != this->inputMap.end(); it_input++) 
 	{
 		for (it_csv = this->csvMap.begin(); it_csv != this->csvMap.end(); it_csv++) 
@@ -86,3 +111,13 @@ void BitcoinExchange::exec_input() {
 		}
 	}
 }
+
+
+
+
+
+
+
+
+
+

@@ -65,26 +65,3 @@ void mergeSort(std::vector<int>& arr, int left, int right)
         merge(arr, left, mid, right);
     }
 }
-
-// int main()
-// {
-//     std::vector<int> v = {5, 4, 3, 2, 1};
-
-//     std::cout << "Before sorting: ";
-//     for (int num : v)
-//     {
-//         std::cout << num << " ";
-//     }
-//     std::cout << std::endl;
-
-//     mergeSort(v, 0, v.size() - 1);
-
-//     std::cout << "After sorting: ";
-//     for (int num : v)
-//     {
-//         std::cout << num << " ";
-//     }
-//     std::cout << std::endl;
-
-//     return 0;
-// }

@@ -1,4 +1,5 @@
 #include "BitcoinExchange.hpp"
+#include "Exception.hpp"
 
 int main(int argc, char **argv) {
     if (argc < 2)
@@ -10,8 +11,9 @@ int main(int argc, char **argv) {
 	{
 		std::string confFile("./data.csv");
 		BitcoinExchange object(confFile);
-		std::string temp(argv[1]);
-		object.readfileinput(temp);
+	
+		std::string tmp(argv[1]);
+		object.readfileinput(tmp);
 		object.exec_input();
 	}
 	catch(const Exception::ErrorFile &e)

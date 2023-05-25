@@ -1,5 +1,6 @@
-CXX=g++
-CXXFLAGS=-std=c++11 -Wall -Wextra -pedantic
+CXX=c++
+
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
 all: RPN
 
@@ -14,3 +15,10 @@ main.o: main.cpp RPN.hpp
 
 clean:
 	rm -f RPN *.o
+
+fclean: clean
+	rm -rf $(NAME)
+	
+re: fclean all
+
+.PHONY: all clean fclean re

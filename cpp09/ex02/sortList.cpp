@@ -5,9 +5,9 @@ void merge(std::list<int>& A, int l, int mid, int r) {
     std::list<int> left(std::next(A.begin(), l), std::next(A.begin(), mid + 1));
     std::list<int> right(std::next(A.begin(), mid + 1), std::next(A.begin(), r + 1));
     
-    auto it1 = left.begin();
-    auto it2 = right.begin();
-    auto it = std::next(A.begin(), l);
+    std::list<int>::iterator it1 = left.begin();
+    std::list<int>::iterator it2 = right.begin();
+    std::list<int>::iterator it = std::next(A.begin(), l);
     
     while (it1 != left.end() && it2 != right.end()) {
         if (*it1 <= *it2) {
@@ -43,21 +43,21 @@ void mergeInsertList(std::list<int>& A, int l, int r) {
 }
 
 // int main() {
-//     std::list<int> s = {5, 4, 3, 2, 1};
-
-//     std::cout << "Before sorting: ";
-//     for (int num : s) {
+//     std::list<int> A = {3, 5, 9, 7, 4};
+    
+//     std::cout << "Before: ";
+//     for (const auto& num : A) {
 //         std::cout << num << " ";
 //     }
 //     std::cout << std::endl;
-
-//     mergeInsertList(s, 0, s.size() - 1);
-
-//     std::cout << "After sorting: ";
-//     for (int num : s) {
+    
+//     mergeInsertList(A, 0, A.size() - 1);
+    
+//     std::cout << "After: ";
+//     for (const auto& num : A) {
 //         std::cout << num << " ";
 //     }
 //     std::cout << std::endl;
-
+    
 //     return 0;
 // }
